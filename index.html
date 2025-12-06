@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ethics Quest - Cyber Professional Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #0057ff;
+      --primary-soft: rgba(0, 87, 255, 0.08);
+      --accent: #00c2b8;
+      --bg: #0f172a;
+      --card: #0b1220;
+      --border: #1f2937;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --danger: #f97373;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background: radial-gradient(circle at top, #1d283a 0, #020617 45%);
+      color: var(--text-main);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    .app-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .header {
+      padding: 16px 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #020617 0%, #020617 40%, #0b1120 100%);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .header-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    .header-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .header-right span strong {
+      color: var(--accent);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .header {
+        align-items: flex-start;
+      }
+      .header-right {
+        align-items: flex-start;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .scoreboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .scoreboard-table th,
+    .scoreboard-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      text-align: left;
+    }
+
+    .scoreboard-table th {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .scoreboard-table tbody tr:hover {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .score-name {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .group-label {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.16);
+      color: var(--text-muted);
+    }
+
+    .score-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      padding: 0;
+    }
+
+    .score-input:focus {
+      outline: none;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .controls-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .select,
+    .input {
+      appearance: none;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      min-width: 0;
+    }
+
+    .select:focus,
+    .input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.35);
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #22c1c3);
+      color: #f9fafb;
+    }
+
+    .btn-soft {
+      background: var(--primary-soft);
+      color: var(--text-main);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .btn-danger {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.6);
+      color: var(--danger);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .badge-topic {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.16);
+      color: #7dd3fc;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .quest-container {
+      border-radius: 12px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 70%);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 12px 14px;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quest-empty {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .quest-title {
+      font-weight: 600;
+      margin-top: 2px;
+      font-size: 0.95rem;
+    }
+
+    .quest-body {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #e5e7eb;
+      margin-top: 4px;
+    }
+
+    .quest-questions {
+      margin-top: 6px;
+      padding-left: 18px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .quest-questions li {
+      margin-bottom: 4px;
+    }
+
+    .quest-meta {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .quest-watermark {
+      position: absolute;
+      right: -10px;
+      bottom: -10px;
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: rgba(30, 64, 175, 0.12);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .score-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .small-input {
+      width: 70px;
+      text-align: center;
+    }
+
+    .footer-note {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .pill {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.1);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <div class="header-title">
+          Ethics Quest
+          <span class="badge">Etika Profesi TI</span>
+        </div>
+        <div class="header-subtitle">
+          8 kelompok bersaing sebagai tim konsultan etika TI. Dosen memicu quest,
+          kelompok mendiskusikan kasus, dan poin diberikan berdasarkan kualitas jawaban.
+        </div>
+      </div>
+      <div class="header-right">
+        <span>Mahasiswa: <strong>±33 orang</strong></span>
+        <span>Kelompok: <strong>8 tim</strong></span>
+        <span>Materi tercakup: <strong>13 topik inti</strong></span>
+      </div>
+    </header>
+
+    <div class="content-grid">
+      <!-- SCOREBOARD -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Scoreboard Kelompok</div>
+            <div class="card-subtitle">
+              Klik nama kelompok untuk mengubah nama tim. Poin bisa direset kapan saja.
+            </div>
+          </div>
+          <button id="resetAllBtn" class="btn btn-outline btn-danger">
+            Reset Semua Poin
+          </button>
+        </div>
+
+        <table class="scoreboard-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nama Kelompok</th>
+              <th>Poin</th>
+            </tr>
+          </thead>
+          <tbody id="scoreboardBody"></tbody>
+        </table>
+      </section>
+
+      <!-- QUEST PANEL -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Panel Quest</div>
+            <div class="card-subtitle">
+              Pilih kelompok dan topik, lalu klik “Tampilkan Quest”.
+            </div>
+          </div>
+          <span class="pill" id="roundInfo">Ronde: 1</span>
+        </div>
+
+        <div class="controls">
+          <div class="controls-row">
+            <select id="groupSelect" class="select">
+              <!-- diisi via JS -->
+            </select>
+            <select id="topicSelect" class="select">
+              <!-- diisi via JS -->
+            </select>
+            <button id="questBtn" class="btn btn-primary">
+              Tampilkan Quest
+            </button>
+          </div>
+        </div>
+
+        <div id="questContainer" class="quest-container" style="margin-top:10px;">
+          <div class="quest-empty">
+            Belum ada quest yang ditampilkan.  
+            Dosen: pilih kelompok & topik lalu klik <strong>Tampilkan Quest</strong>.
+          </div>
+        </div>
+
+        <div class="score-buttons">
+          <button class="btn btn-soft" data-score="+5">+5 poin</button>
+          <button class="btn btn-soft" data-score="+10">+10 poin</button>
+          <div style="display:flex; align-items:center; gap:4px;">
+            <input
+              type="number"
+              id="customScore"
+              class="input small-input"
+              placeholder="Custom"
+            />
+            <button class="btn btn-soft" id="customScoreBtn">Tambah</button>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          Catatan: Poin akan ditambahkan ke kelompok yang sekarang terpilih di dropdown.
+          Gunakan ini setelah kelompok selesai mempresentasikan jawaban.
+        </div>
+      </section>
+    </div>
+  </div>
+
+<script>
+  // ====== KEY UNTUK localStorage ======
+  const STORAGE_KEY = "ethicsQuestState_v1";
+
+  // ====== DATA KELOMPOK ======
+  const groups = [
+    { id: 1, name: "Kelompok 1", score: 0 },
+    { id: 2, name: "Kelompok 2", score: 0 },
+    { id: 3, name: "Kelompok 3", score: 0 },
+    { id: 4, name: "Kelompok 4", score: 0 },
+    { id: 5, name: "Kelompok 5", score: 0 },
+    { id: 6, name: "Kelompok 6", score: 0 },
+    { id: 7, name: "Kelompok 7", score: 0 },
+    { id: 8, name: "Kelompok 8", score: 0 }
+  ];
+
+  // ====== BANK QUEST (13 TOPIK) ======
+  const topics = [
+    {
+      id: "filsafat",
+      name: "1. Filsafat Etika",
+      short: "Filsafat Etika",
+      quests: [
+        {
+          title: "Bug Kritis vs Deadline Klien",
+          body:
+            "Sebuah tim developer menemukan bug yang bisa menyebabkan kebocoran data pengguna. " +
+            "Manajer proyek mendesak untuk tetap melakukan peluncuran karena sudah terlambat 2 minggu " +
+            "dan takut kehilangan kepercayaan klien jika ditunda lagi.",
+          questions: [
+            "Analisis kasus ini dengan minimal dua pendekatan: deontologi dan utilitarianisme.",
+            "Apa tindakan yang paling etis menurut kalian? Jelaskan alasannya.",
+            "Bagaimana dampaknya terhadap reputasi profesi TI dalam jangka panjang?"
+          ],
+          difficulty: "Diskusi mendalam"
+        }
+      ]
+    },
+    {
+      id: "profesi",
+      name: "2. Profesi & Profesionalisme",
+      short: "Profesi & Profesionalisme",
+      quests: [
+        {
+          title: "Freelancer vs Profesional",
+          body:
+            "Seorang mahasiswa TI menerima pekerjaan freelance membangun website untuk UKM. " +
+            "Ia memasang harga sangat murah dan tidak membuat kontrak kerja tertulis, hanya kesepakatan lewat chat.",
+          questions: [
+            "Apakah cara kerja tersebut sudah mencerminkan profesionalisme? Jelaskan.",
+            "Sebutkan minimal tiga ciri profesi dan tunjukkan mana yang belum terpenuhi.",
+            "Apa risiko bagi klien dan bagi pengembang TI jika tidak ada kontrak formal?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    },
+    {
+      id: "profesiti",
+      name: "3. Profesi TI",
+      short: "Profesi TI",
+      quests: [
+        {
+          title: "Tim Pengembang Sistem Rumah Sakit",
+          body:
+            "Sebuah tim pengembang TI diminta membuat sistem rekam medis elektronik rumah sakit. " +
+            "Salah satu anggota tim menganggap pekerjaannya sama saja seperti proyek biasa dan tidak perlu " +
+            "memikirkan aspek etika secara khusus.",
+          questions: [
+            "Apa kekhususan profesi TI ketika menangani data kesehatan pasien?",
+            "Tanggung jawab moral apa saja yang dimiliki profesional TI dalam konteks ini?",
+            "Apa konsekuensi jika profesional TI mengabaikan tanggung jawab etis di sistem kritis seperti ini?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    },
+    {
+      id: "kodeetik",
+      name: "4. Kode Etik Profesi TI",
+      short: "Kode Etik TI",
+      quests: [
+        {
+          title: "Diminta Mengintip Data Karyawan",
+          body:
+            "Seorang admin sistem di perusahaan diminta atasan untuk memberikan akses ke email " +
+            "dan log aktivitas internet salah satu karyawan yang dicurigai akan pindah ke kompetitor.",
+          questions: [
+            "Bagian mana dari kode etik profesi TI yang berkaitan dengan kasus ini?",
+            "Kapan, jika pernah, boleh membuka data pribadi karyawan menurut perspektif etika profesi?",
+            "Sikap apa yang seharusnya diambil admin sistem terhadap permintaan atasan tersebut?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    },
+    {
+      id: "cybercrime",
+      name: "5. Cybercrime",
+      short: "Cybercrime",
+      quests: [
+        {
+          title: "Jasa 'Joki' Retas Akun",
+          body:
+            "Di media sosial, seseorang menawarkan jasa 'joki' untuk mengembalikan akun yang diretas, " +
+            "tapi metode yang digunakan adalah meretas akun pelaku atau menggunakan teknik phishing balik.",
+          questions: [
+            "Apakah tindakan tersebut termasuk cybercrime? Jelaskan kategori tindakannya.",
+            "Apa bedanya antara etika membantu korban dan menjadi pelaku cybercrime baru?",
+            "Bagaimana seharusnya profesional TI membantu kasus peretasan secara etis dan legal?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    },
+    {
+      id: "karaktercyber",
+      name: "6. Karakteristik Cybercrime",
+      short: "Karakteristik Cybercrime",
+      quests: [
+        {
+          title: "Serangan dari Negara Lain",
+          body:
+            "Sebuah e-commerce Indonesia terkena serangan DDoS dari server yang lokasinya tersebar di beberapa negara. " +
+            "Perusahaan kesulitan melacak pelaku aslinya.",
+          questions: [
+            "Sebutkan minimal tiga karakteristik cybercrime yang muncul dalam kasus ini.",
+            "Mengapa penegakan hukum terhadap cybercrime seringkali lebih sulit dibanding kejahatan konvensional?",
+            "Apa peran profesional TI dalam membantu proses investigasi tanpa melanggar hukum?"
+          ],
+          difficulty: "Menengah–Tinggi"
+        }
+      ]
+    },
+    {
+      id: "etikamaya",
+      name: "7. Etika di Dunia Maya",
+      short: "Etika Dunia Maya",
+      quests: [
+        {
+          title: "Grup Kelas yang Beracun",
+          body:
+            "Di grup chat kelas, beberapa mahasiswa membagikan meme yang menghina dosen dan teman sekelas " +
+            "dengan kata-kata kasar. Mereka beralasan 'cuma bercanda' dan grupnya bersifat privat.",
+          questions: [
+            "Apakah prinsip etika di dunia nyata berbeda dengan di dunia maya? Jelaskan.",
+            "Bagaimana konsep netiquette diterapkan pada kasus ini?",
+            "Apa potensi dampak psikologis dan profesional dari perilaku seperti ini?"
+          ],
+          difficulty: "Dasar–Menengah"
+        }
+      ]
+    },
+    {
+      id: "cyberlaw",
+      name: "8. Cyber Law & UU ITE",
+      short: "Cyber Law & UU ITE",
+      quests: [
+        {
+          title: "Review Produk yang Berujung Laporan",
+          body:
+            "Seorang pengguna menulis review negatif tentang sebuah produk di marketplace. " +
+            "Pemilik toko merasa dirugikan dan mengancam akan melaporkan dengan UU ITE.",
+          questions: [
+            "Bagaimana membedakan kritik yang sah dengan pencemaran nama baik dalam konteks UU ITE?",
+            "Apa peran etika ketika kita menulis pendapat di platform publik meski secara hukum mungkin masih 'aman'?",
+            "Sebagai profesional TI, bagaimana kalian akan merancang fitur review agar meminimalkan konflik seperti ini?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    },
+    {
+      id: "uuite",
+      name: "9. Undang-Undang ITE",
+      short: "UU ITE",
+      quests: [
+        {
+          title: "Share Ulang Konten Hoaks",
+          body:
+            "Seorang mahasiswa membagikan ulang (forward) sebuah info lowongan kerja palsu melalui grup kampus " +
+            "tanpa mengecek kebenarannya terlebih dahulu.",
+          questions: [
+            "Tindakan apa saja yang diatur UU ITE terkait penyebaran informasi bohong (hoaks)?",
+            "Secara etika, apakah 'tidak tahu' bisa dijadikan alasan pembenar?",
+            "Apa kebiasaan digital yang seharusnya dibangun untuk mencegah hal seperti ini?"
+          ],
+          difficulty: "Dasar–Menengah"
+        }
+      ]
+    },
+    {
+      id: "haki",
+      name: "10. Hak Kekayaan Intelektual (HAKI)",
+      short: "HAKI",
+      quests: [
+        {
+          title: "Template dan Desain Bajakan",
+          body:
+            "Sebuah agensi kecil menggunakan template website dan icon pack premium yang diunduh dari situs bajakan " +
+            "untuk klien berbayar.",
+          questions: [
+            "Hak kekayaan intelektual apa saja yang dilanggar dalam kasus ini?",
+            "Apa dampak jangka panjang bagi reputasi agensi dan klien jika ini terbongkar?",
+            "Bagaimana kebijakan internal yang seharusnya dimiliki perusahaan terkait penggunaan aset digital?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    },
+    {
+      id: "dimensihaki",
+      name: "11. Dimensi HAKI",
+      short: "Dimensi HAKI",
+      quests: [
+        {
+          title: "Software Kampus: Milik Siapa?",
+          body:
+            "Sebuah tim mahasiswa membuat sistem informasi untuk kampus sebagai bagian dari proyek akhir. " +
+            "Beberapa tahun kemudian, kampus mengkomersialkan sistem tersebut tanpa menyebut nama pembuat awal.",
+          questions: [
+            "Jelaskan dimensi ekonomi, moral, dan hukum dari HAKI dalam kasus ini.",
+            "Siapa saja pihak yang memiliki klaim atas hak cipta sistem tersebut?",
+            "Bagaimana seharusnya perjanjian HAKI diatur sejak awal antara kampus dan mahasiswa?"
+          ],
+          difficulty: "Menengah–Tinggi"
+        }
+      ]
+    },
+    {
+      id: "sertifikasi",
+      name: "12. Sertifikasi Keahlian TI",
+      short: "Sertifikasi TI",
+      quests: [
+        {
+          title: "Fresh Graduate vs Sertifikasi",
+          body:
+            "Seorang fresh graduate TI melamar ke perusahaan besar namun tidak memiliki sertifikasi resmi. " +
+            "Perusahaan lain yang lebih kecil menawarkan pekerjaan dengan syarat ia mau mengambil sertifikasi tertentu dalam 1 tahun.",
+          questions: [
+            "Apa manfaat sertifikasi keahlian TI bagi individu dan perusahaan?",
+            "Bagaimana hubungan antara sertifikasi, kompetensi nyata, dan etika profesi?",
+            "Kapan sertifikasi bisa menjadi sekadar formalitas, dan bagaimana menghindari itu?"
+          ],
+          difficulty: "Dasar–Menengah"
+        }
+      ]
+    },
+    {
+      id: "upayasertifikasi",
+      name: "13. Upaya Meraih Sertifikasi TI",
+      short: "Upaya Sertifikasi",
+      quests: [
+        {
+          title: "Curang di Ujian Sertifikasi",
+          body:
+            "Seorang profesional TI membayar orang lain untuk mengerjakan ujian sertifikasi online atas namanya, " +
+            "dengan alasan ia terlalu sibuk dan hanya butuh sertifikatnya saja.",
+          questions: [
+            "Apa konsekuensi etis dan profesional dari tindakan ini?",
+            "Bagaimana tindakan ini dapat merugikan industri TI secara luas?",
+            "Upaya apa yang etis untuk mempersiapkan diri meraih sertifikasi TI yang sulit?"
+          ],
+          difficulty: "Menengah"
+        }
+      ]
+    }
+  ];
+
+  let currentRound = 1;
+
+  const scoreboardBody = document.getElementById("scoreboardBody");
+  const groupSelect = document.getElementById("groupSelect");
+  const topicSelect = document.getElementById("topicSelect");
+  const questBtn = document.getElementById("questBtn");
+  const questContainer = document.getElementById("questContainer");
+  const resetAllBtn = document.getElementById("resetAllBtn");
+  const roundInfo = document.getElementById("roundInfo");
+  const customScoreInput = document.getElementById("customScore");
+  const customScoreBtn = document.getElementById("customScoreBtn");
+
+  // ====== LOCAL STORAGE: SAVE & LOAD ======
+  function saveState() {
+    try {
+      const data = {
+        groups: groups.map(g => ({
+          id: g.id,
+          name: g.name,
+          score: g.score
+        })),
+        currentRound
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+      console.warn("Gagal menyimpan ke localStorage:", e);
+    }
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+
+      if (data && Array.isArray(data.groups)) {
+        data.groups.forEach(saved => {
+          const g = groups.find(x => x.id === saved.id);
+          if (g) {
+            if (typeof saved.name === "string") g.name = saved.name;
+            if (typeof saved.score === "number") g.score = saved.score;
+          }
+        });
+      }
+
+      if (data && typeof data.currentRound === "number") {
+        currentRound = data.currentRound;
+        roundInfo.textContent = `Ronde: ${currentRound}`;
+      }
+    } catch (e) {
+      console.warn("Gagal membaca dari localStorage:", e);
+    }
+  }
+
+  function renderScoreboard() {
+    // sort by score descending
+    const sorted = [...groups].sort((a, b) => b.score - a.score);
+    scoreboardBody.innerHTML = "";
+    sorted.forEach((g, index) => {
+      const tr = document.createElement("tr");
+
+      const rankTd = document.createElement("td");
+      rankTd.textContent = index + 1;
+
+      const nameTd = document.createElement("td");
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "score-name";
+
+      const labelSpan = document.createElement("span");
+      labelSpan.className = "group-label";
+      labelSpan.textContent = `#${g.id}`;
+
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = g.name;
+      nameSpan.style.cursor = "pointer";
+      nameSpan.title = "Klik untuk mengubah nama kelompok";
+
+      nameSpan.addEventListener("click", () => {
+        const newName = prompt("Nama baru untuk kelompok ini:", g.name);
+        if (newName && newName.trim().length > 0) {
+          g.name = newName.trim();
+          syncGroupSelectOptions();
+          renderScoreboard();
+          saveState(); // simpan perubahan nama
+        }
+      });
+
+      nameDiv.appendChild(labelSpan);
+      nameDiv.appendChild(nameSpan);
+      nameTd.appendChild(nameDiv);
+
+      const scoreTd = document.createElement("td");
+      scoreTd.textContent = g.score;
+
+      tr.appendChild(rankTd);
+      tr.appendChild(nameTd);
+      tr.appendChild(scoreTd);
+
+      scoreboardBody.appendChild(tr);
+    });
+  }
+
+  function syncGroupSelectOptions() {
+    const selectedId = parseInt(groupSelect.value || "1", 10);
+    groupSelect.innerHTML = "";
+    groups.forEach((g) => {
+      const opt = document.createElement("option");
+      opt.value = g.id;
+      opt.textContent = `${g.id}. ${g.name}`;
+      if (g.id === selectedId) opt.selected = true;
+      groupSelect.appendChild(opt);
+    });
+  }
+
+  function initTopicSelect() {
+    topicSelect.innerHTML = "";
+    topics.forEach((t) => {
+      const opt = document.createElement("option");
+      opt.value = t.id;
+      opt.textContent = t.name;
+      topicSelect.appendChild(opt);
+    });
+  }
+
+  function getSelectedGroup() {
+    const id = parseInt(groupSelect.value, 10);
+    return groups.find((g) => g.id === id);
+  }
+
+  function getSelectedTopic() {
+    const id = topicSelect.value;
+    return topics.find((t) => t.id === id);
+  }
+
+  function showQuest() {
+    const topic = getSelectedTopic();
+    if (!topic || !topic.quests || topic.quests.length === 0) {
+      questContainer.innerHTML =
+        '<div class="quest-empty">Belum ada quest untuk topik ini.</div>';
+      return;
+    }
+
+    const quest =
+      topic.quests[Math.floor(Math.random() * topic.quests.length)];
+    const group = getSelectedGroup();
+
+    questContainer.innerHTML = "";
+
+    const topicBadge = document.createElement("div");
+    topicBadge.className = "badge-topic";
+    topicBadge.textContent = topic.short;
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "quest-title";
+    titleEl.textContent = quest.title;
+
+    const bodyEl = document.createElement("div");
+    bodyEl.className = "quest-body";
+    bodyEl.textContent = quest.body;
+
+    const ul = document.createElement("ul");
+    ul.className = "quest-questions";
+    quest.questions.forEach((q) => {
+      const li = document.createElement("li");
+      li.textContent = q;
+      ul.appendChild(li);
+    });
+
+    const meta = document.createElement("div");
+    meta.className = "quest-meta";
+    meta.innerHTML =
+      `<span>Kelompok terpilih: <strong>${group.name}</strong></span>` +
+      `<span>Level: ${quest.difficulty}</span>`;
+
+    const watermark = document.createElement("div");
+    watermark.className = "quest-watermark";
+    watermark.textContent = "ETHICS";
+
+    questContainer.appendChild(topicBadge);
+    questContainer.appendChild(titleEl);
+    questContainer.appendChild(bodyEl);
+    questContainer.appendChild(ul);
+    questContainer.appendChild(meta);
+    questContainer.appendChild(watermark);
+
+    currentRound++;
+    roundInfo.textContent = `Ronde: ${currentRound}`;
+    saveState(); // simpan ronde terbaru
+  }
+
+  function addScore(delta) {
+    const group = getSelectedGroup();
+    if (!group) return;
+    group.score += delta;
+    if (group.score < 0) group.score = 0;
+    renderScoreboard();
+    saveState(); // simpan perubahan skor
+  }
+
+  // ====== EVENT BINDING ======
+  questBtn.addEventListener("click", showQuest);
+
+  document.querySelectorAll(".score-buttons .btn-soft").forEach((btn) => {
+    const val = btn.getAttribute("data-score");
+    if (!val) return;
+    btn.addEventListener("click", () => {
+      const num = parseInt(val.replace("+", ""), 10);
+      if (!isNaN(num)) addScore(num);
+    });
+  });
+
+  customScoreBtn.addEventListener("click", () => {
+    const value = parseInt(customScoreInput.value, 10);
+    if (isNaN(value)) return;
+    addScore(value);
+    customScoreInput.value = "";
+  });
+
+  resetAllBtn.addEventListener("click", () => {
+    if (
+      confirm(
+        "Yakin ingin mereset semua poin? Tindakan ini tidak bisa dibatalkan."
+      )
+    ) {
+      groups.forEach((g) => (g.score = 0));
+      currentRound = 1;
+      roundInfo.textContent = `Ronde: ${currentRound}`;
+      renderScoreboard();
+      saveState(); // simpan state kosong
+    }
+  });
+
+  // INIT: load state dulu, baru render
+  loadState();
+  syncGroupSelectOptions();
+  initTopicSelect();
+  renderScoreboard();
+</script>
+
+</body>
+</html>
