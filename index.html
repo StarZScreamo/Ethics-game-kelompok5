@@ -2,19 +2,18 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Ethics Quest - Cyber Professional Challenge</title>
+  <title>Ethics Quiz Arena - Etika Profesi TI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --primary: #0057ff;
-      --primary-soft: rgba(0, 87, 255, 0.08);
-      --accent: #00c2b8;
-      --bg: #0f172a;
-      --card: #0b1220;
+      --primary: #2563eb;
+      --accent: #22c55e;
+      --danger: #f97373;
+      --bg: #020617;
+      --card-soft: #020617;
       --border: #1f2937;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --danger: #f97373;
     }
 
     * {
@@ -26,15 +25,11 @@
     body {
       margin: 0;
       padding: 16px;
-      background: radial-gradient(circle at top, #1d283a 0, #020617 45%);
+      background: radial-gradient(circle at top, #111827 0, #020617 45%);
       color: var(--text-main);
     }
 
-    h1, h2, h3 {
-      margin: 0;
-    }
-
-    .app-container {
+    .app {
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
@@ -43,10 +38,10 @@
     }
 
     .header {
-      padding: 16px 20px;
+      padding: 14px 16px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #020617 0%, #020617 40%, #0b1120 100%);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: linear-gradient(135deg, #020617 0, #020617 40%, #0b1120 100%);
       display: flex;
       flex-wrap: wrap;
       gap: 8px 24px;
@@ -57,15 +52,18 @@
     .header-left {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
-    .header-title {
+    .title-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .title {
       font-size: 1.4rem;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .badge {
@@ -74,40 +72,35 @@
       letter-spacing: 0.08em;
       padding: 2px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.7);
       color: var(--text-muted);
     }
 
-    .header-subtitle {
-      font-size: 0.85rem;
+    .subtitle {
+      font-size: 0.82rem;
       color: var(--text-muted);
+      max-width: 420px;
     }
 
     .header-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
       font-size: 0.8rem;
       color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-end;
     }
+    .header-right strong { color: var(--accent); }
 
-    .header-right span strong {
-      color: var(--accent);
-    }
-
-    .content-grid {
+    .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
       gap: 16px;
     }
 
     @media (max-width: 900px) {
-      .content-grid {
+      .layout {
         grid-template-columns: 1fr;
-      }
-      .header {
-        align-items: flex-start;
       }
       .header-right {
         align-items: flex-start;
@@ -115,10 +108,10 @@
     }
 
     .card {
-      background: var(--card);
+      background: var(--card-soft);
       border-radius: 14px;
       border: 1px solid var(--border);
-      padding: 14px 16px;
+      padding: 12px 14px;
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
     }
 
@@ -126,8 +119,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
       gap: 8px;
+      margin-bottom: 8px;
     }
 
     .card-title {
@@ -136,31 +129,38 @@
     }
 
     .card-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
-    .scoreboard-table {
+    .pill {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.15);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.85rem;
     }
 
-    .scoreboard-table th,
-    .scoreboard-table td {
-      padding: 8px 10px;
+    th, td {
+      padding: 6px 8px;
       border-bottom: 1px solid rgba(31, 41, 55, 0.9);
       text-align: left;
     }
 
-    .scoreboard-table th {
+    th {
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-muted);
     }
 
-    .scoreboard-table tbody tr:hover {
+    tbody tr:hover {
       background: rgba(15, 23, 42, 0.7);
     }
 
@@ -170,7 +170,7 @@
       gap: 6px;
     }
 
-    .group-label {
+    .group-tag {
       font-size: 0.7rem;
       padding: 2px 7px;
       border-radius: 999px;
@@ -178,74 +178,31 @@
       color: var(--text-muted);
     }
 
-    .score-input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: var(--text-main);
-      font-size: 0.85rem;
-      padding: 0;
+    .name-click {
+      cursor: pointer;
     }
 
-    .score-input:focus {
-      outline: none;
-      border-bottom: 1px solid var(--accent);
-    }
-
-    .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .controls-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .select,
-    .input {
-      appearance: none;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      padding: 6px 12px;
-      font-size: 0.85rem;
-      color: var(--text-main);
-      min-width: 0;
-    }
-
-    .select:focus,
-    .input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.35);
+    .score-val {
+      font-weight: 600;
     }
 
     .btn {
       border-radius: 999px;
       border: none;
-      padding: 8px 14px;
-      font-size: 0.8rem;
+      padding: 7px 12px;
+      font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #22c1c3);
+      background: linear-gradient(135deg, var(--primary), #38bdf8);
       color: #f9fafb;
-    }
-
-    .btn-soft {
-      background: var(--primary-soft);
-      color: var(--text-main);
     }
 
     .btn-outline {
@@ -254,729 +211,1999 @@
       color: var(--text-muted);
     }
 
-    .btn-danger {
-      background: rgba(220, 38, 38, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.6);
-      color: var(--danger);
-    }
-
     .btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
 
+    .btn-danger {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.8);
+      color: var(--danger);
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .select {
+      appearance: none;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 6px 11px;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      min-width: 0;
+    }
+
+    .select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5);
+    }
+
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
     .badge-topic {
       font-size: 0.7rem;
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 999px;
-      background: rgba(56, 189, 248, 0.16);
+      background: rgba(56, 189, 248, 0.18);
       color: #7dd3fc;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
-    .quest-container {
+    .progress-bar {
+      position: relative;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.4);
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .progress-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #38bdf8);
+      transition: width 0.3s linear;
+    }
+
+    .quiz-box {
       border-radius: 12px;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 70%);
       border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 12px 14px;
-      min-height: 170px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 70%);
+      padding: 10px 12px;
+      min-height: 190px;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .quest-empty {
-      font-size: 0.9rem;
+    .quiz-placeholder {
+      font-size: 0.85rem;
       color: var(--text-muted);
       font-style: italic;
     }
 
-    .quest-title {
+    .quiz-question {
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-top: 2px;
-      font-size: 0.95rem;
     }
 
-    .quest-body {
-      font-size: 0.85rem;
-      line-height: 1.4;
-      color: #e5e7eb;
-      margin-top: 4px;
-    }
-
-    .quest-questions {
-      margin-top: 6px;
-      padding-left: 18px;
-      font-size: 0.85rem;
+    .quiz-scenario {
+      font-size: 0.82rem;
       color: var(--text-main);
+      opacity: 0.95;
     }
 
-    .quest-questions li {
-      margin-bottom: 4px;
-    }
-
-    .quest-meta {
+    .options {
       margin-top: 6px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .option {
+      border-radius: 10px;
+      padding: 8px 10px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      background: rgba(15, 23, 42, 0.9);
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out,
+        border-color 0.08s ease-out, background 0.08s ease-out;
+    }
+
+    .option:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.7);
+      border-color: rgba(96, 165, 250, 0.9);
+    }
+
+    .option-prefix {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #9ca3af;
+      margin-top: 1px;
+    }
+
+    .option-text {
+      flex: 1;
+    }
+
+    .option.correct {
+      border-color: rgba(74, 222, 128, 0.9);
+      background: rgba(22, 163, 74, 0.16);
+    }
+
+    .option.wrong {
+      border-color: rgba(239, 68, 68, 0.9);
+      background: rgba(127, 29, 29, 0.35);
+    }
+
+    .option.disabled {
+      cursor: default;
+      opacity: 0.86;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .result-banner {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 10px;
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .quest-watermark {
-      position: absolute;
-      right: -10px;
-      bottom: -10px;
-      font-size: 3.4rem;
-      font-weight: 800;
-      color: rgba(30, 64, 175, 0.12);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .score-buttons {
-      display: flex;
-      flex-wrap: wrap;
       gap: 6px;
-      margin-top: 10px;
       align-items: center;
     }
 
-    .small-input {
-      width: 70px;
-      text-align: center;
+    .result-banner.success {
+      background: rgba(22, 163, 74, 0.2);
+      color: #bbf7d0;
+      border: 1px solid rgba(74, 222, 128, 0.8);
     }
 
-    .footer-note {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-top: 6px;
+    .result-banner.fail {
+      background: rgba(127, 29, 29, 0.55);
+      color: #fee2e2;
+      border: 1px solid rgba(239, 68, 68, 0.9);
     }
 
-    .pill {
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.1);
-      font-size: 0.76rem;
+    .result-text {
+      font-size: 0.8rem;
+    }
+
+    .result-extra {
+      font-size: 0.78rem;
+      color: rgba(248, 250, 252, 0.9);
+    }
+
+    .quiz-footer {
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
       color: var(--text-muted);
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .watermark {
+      position: absolute;
+      right: -16px;
+      bottom: -18px;
+      font-size: 3.6rem;
+      font-weight: 800;
+      color: rgba(30, 64, 175, 0.22);
+      pointer-events: none;
+      user-select: none;
     }
   </style>
 </head>
 <body>
-  <div class="app-container">
+  <div class="app">
     <!-- HEADER -->
     <header class="header">
       <div class="header-left">
-        <div class="header-title">
-          Ethics Quest
+        <div class="title-row">
+          <div class="title">Ethics Quiz Arena</div>
           <span class="badge">Etika Profesi TI</span>
         </div>
-        <div class="header-subtitle">
-          8 kelompok bersaing sebagai tim konsultan etika TI. Dosen memicu quest,
-          kelompok mendiskusikan kasus, dan poin diberikan berdasarkan kualitas jawaban.
+        <div class="subtitle">
+          Kuis interaktif berbasis kasus. Pilih kelompok & topik (bisa pakai dadu),
+          jawab, dan skor dihitung otomatis. Benar +10, salah -5 (bisa minus).
+          Bar hijau = timer 60 detik per soal.
         </div>
       </div>
       <div class="header-right">
-        <span>Mahasiswa: <strong>±33 orang</strong></span>
+        <span>Mahasiswa: <strong>±33</strong></span>
         <span>Kelompok: <strong>8 tim</strong></span>
-        <span>Materi tercakup: <strong>13 topik inti</strong></span>
+        <span>Skor: <strong>Benar +10, salah -5</strong></span>
       </div>
     </header>
 
-    <div class="content-grid">
+    <div class="layout">
       <!-- SCOREBOARD -->
       <section class="card">
         <div class="card-header">
           <div>
             <div class="card-title">Scoreboard Kelompok</div>
             <div class="card-subtitle">
-              Klik nama kelompok untuk mengubah nama tim. Poin bisa direset kapan saja.
+              Klik nama kelompok untuk ganti nama. Skor bisa naik & turun (ati ati minus ya wkwkw).
             </div>
           </div>
-          <button id="resetAllBtn" class="btn btn-outline btn-danger">
-            Reset Semua Poin
+          <button id="resetScoresBtn" class="btn btn-outline btn-danger">
+            Reset Skor
           </button>
         </div>
 
-        <table class="scoreboard-table">
+        <table>
           <thead>
             <tr>
               <th>#</th>
-              <th>Nama Kelompok</th>
-              <th>Poin</th>
+              <th>Kelompok</th>
+              <th>Skor</th>
             </tr>
           </thead>
           <tbody id="scoreboardBody"></tbody>
         </table>
       </section>
 
-      <!-- QUEST PANEL -->
+      <!-- QUIZ AREA -->
       <section class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Panel Quest</div>
+            <div class="card-title">Arena Kuis</div>
             <div class="card-subtitle">
-              Pilih kelompok dan topik, lalu klik “Tampilkan Quest”.
+              Lempar dadu untuk menentukan materi, lalu klik “MULAI RONDE”.
+              Benar +10, salah -15. Waktu menjawab: 40 detik.
             </div>
           </div>
-          <span class="pill" id="roundInfo">Ronde: 1</span>
+          <span id="roundBadge" class="pill">Ronde: 1</span>
         </div>
 
-        <div class="controls">
-          <div class="controls-row">
-            <select id="groupSelect" class="select">
-              <!-- diisi via JS -->
-            </select>
-            <select id="topicSelect" class="select">
-              <!-- diisi via JS -->
-            </select>
-            <button id="questBtn" class="btn btn-primary">
-              Tampilkan Quest
-            </button>
+        <div class="controls-row">
+          <select id="groupSelect" class="select"></select>
+          <select id="topicSelect" class="select"></select>
+          <button id="rollDiceBtn" class="btn btn-outline">Lempar Dadu Topik</button>
+          <button id="startRoundBtn" class="btn btn-primary">Mulai Ronde</button>
+        </div>
+
+        <div class="quiz-meta">
+          <span>Kelompok aktif: <strong id="activeGroupLabel">-</strong></span>
+          <span id="diceInfo" class="pill">Dadu: -</span>
+          <span id="topicLabel">Topik: -</span>
+        </div>
+
+        <div class="progress-bar">
+          <div id="progressInner" class="progress-inner"></div>
+        </div>
+
+        <div id="quizBox" class="quiz-box">
+          <div class="quiz-placeholder">
+            Belum ada soal.  
+            Dosen: pilih kelompok, lempar dadu atau pilih topik, lalu klik <strong>MULAI RONDE</strong>.
           </div>
         </div>
 
-        <div id="questContainer" class="quest-container" style="margin-top:10px;">
-          <div class="quest-empty">
-            Belum ada quest yang ditampilkan.  
-            Dosen: pilih kelompok & topik lalu klik <strong>Tampilkan Quest</strong>.
-          </div>
-        </div>
-
-        <div class="score-buttons">
-          <button class="btn btn-soft" data-score="+5">+5 poin</button>
-          <button class="btn btn-soft" data-score="+10">+10 poin</button>
-          <div style="display:flex; align-items:center; gap:4px;">
-            <input
-              type="number"
-              id="customScore"
-              class="input small-input"
-              placeholder="Custom"
-            />
-            <button class="btn btn-soft" id="customScoreBtn">Tambah</button>
-          </div>
-        </div>
-
-        <div class="footer-note">
-          Catatan: Poin akan ditambahkan ke kelompok yang sekarang terpilih di dropdown.
-          Gunakan ini setelah kelompok selesai mempresentasikan jawaban.
+        <div class="quiz-footer">
+          <span>Benar: +10 · Salah: -15 (bisa minus).</span>
+          <span id="questionInfo">Waktu tersisa: - detik</span>
         </div>
       </section>
     </div>
   </div>
 
-<script>
-  // ====== KEY UNTUK localStorage ======
-  const STORAGE_KEY = "ethicsQuestState_v1";
+  <script>
+    const STORAGE_KEY = "ethicsQuizArena_v5";
+    const CORRECT_REWARD = 10; // Skor ditambah 10 untuk jawaban benar
+    const WRONG_PENALTY = 15; // Skor dikurangi 15 untuk jawaban salah
+    const TIME_LIMIT = 40; // detik
 
-  // ====== DATA KELOMPOK ======
-  const groups = [
-    { id: 1, name: "Kelompok 1", score: 0 },
-    { id: 2, name: "Kelompok 2", score: 0 },
-    { id: 3, name: "Kelompok 3", score: 0 },
-    { id: 4, name: "Kelompok 4", score: 0 },
-    { id: 5, name: "Kelompok 5", score: 0 },
-    { id: 6, name: "Kelompok 6", score: 0 },
-    { id: 7, name: "Kelompok 7", score: 0 },
-    { id: 8, name: "Kelompok 8", score: 0 }
-  ];
+    const groups = [
+      { id: 1, name: "Kelompok 1", score: 0 },
+      { id: 2, name: "Kelompok 2", score: 0 },
+      { id: 3, name: "Kelompok 3", score: 0 },
+      { id: 4, name: "Kelompok 4", score: 0 },
+      { id: 5, name: "Kelompok 5", score: 0 },
+      { id: 6, name: "Kelompok 6", score: 0 },
+      { id: 7, name: "Kelompok 7", score: 0 },
+      { id: 8, name: "Kelompok 8", score: 0 }
+    ];
 
-  // ====== BANK QUEST (13 TOPIK) ======
-  const topics = [
-    {
-      id: "filsafat",
-      name: "1. Filsafat Etika",
-      short: "Filsafat Etika",
-      quests: [
-        {
-          title: "Bug Kritis vs Deadline Klien",
-          body:
-            "Sebuah tim developer menemukan bug yang bisa menyebabkan kebocoran data pengguna. " +
-            "Manajer proyek mendesak untuk tetap melakukan peluncuran karena sudah terlambat 2 minggu " +
-            "dan takut kehilangan kepercayaan klien jika ditunda lagi.",
-          questions: [
-            "Analisis kasus ini dengan minimal dua pendekatan: deontologi dan utilitarianisme.",
-            "Apa tindakan yang paling etis menurut kalian? Jelaskan alasannya.",
-            "Bagaimana dampaknya terhadap reputasi profesi TI dalam jangka panjang?"
-          ],
-          difficulty: "Diskusi mendalam"
-        }
-      ]
-    },
-    {
-      id: "profesi",
-      name: "2. Profesi & Profesionalisme",
-      short: "Profesi & Profesionalisme",
-      quests: [
-        {
-          title: "Freelancer vs Profesional",
-          body:
-            "Seorang mahasiswa TI menerima pekerjaan freelance membangun website untuk UKM. " +
-            "Ia memasang harga sangat murah dan tidak membuat kontrak kerja tertulis, hanya kesepakatan lewat chat.",
-          questions: [
-            "Apakah cara kerja tersebut sudah mencerminkan profesionalisme? Jelaskan.",
-            "Sebutkan minimal tiga ciri profesi dan tunjukkan mana yang belum terpenuhi.",
-            "Apa risiko bagi klien dan bagi pengembang TI jika tidak ada kontrak formal?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    },
-    {
-      id: "profesiti",
-      name: "3. Profesi TI",
-      short: "Profesi TI",
-      quests: [
-        {
-          title: "Tim Pengembang Sistem Rumah Sakit",
-          body:
-            "Sebuah tim pengembang TI diminta membuat sistem rekam medis elektronik rumah sakit. " +
-            "Salah satu anggota tim menganggap pekerjaannya sama saja seperti proyek biasa dan tidak perlu " +
-            "memikirkan aspek etika secara khusus.",
-          questions: [
-            "Apa kekhususan profesi TI ketika menangani data kesehatan pasien?",
-            "Tanggung jawab moral apa saja yang dimiliki profesional TI dalam konteks ini?",
-            "Apa konsekuensi jika profesional TI mengabaikan tanggung jawab etis di sistem kritis seperti ini?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    },
-    {
-      id: "kodeetik",
-      name: "4. Kode Etik Profesi TI",
-      short: "Kode Etik TI",
-      quests: [
-        {
-          title: "Diminta Mengintip Data Karyawan",
-          body:
-            "Seorang admin sistem di perusahaan diminta atasan untuk memberikan akses ke email " +
-            "dan log aktivitas internet salah satu karyawan yang dicurigai akan pindah ke kompetitor.",
-          questions: [
-            "Bagian mana dari kode etik profesi TI yang berkaitan dengan kasus ini?",
-            "Kapan, jika pernah, boleh membuka data pribadi karyawan menurut perspektif etika profesi?",
-            "Sikap apa yang seharusnya diambil admin sistem terhadap permintaan atasan tersebut?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    },
-    {
-      id: "cybercrime",
-      name: "5. Cybercrime",
-      short: "Cybercrime",
-      quests: [
-        {
-          title: "Jasa 'Joki' Retas Akun",
-          body:
-            "Di media sosial, seseorang menawarkan jasa 'joki' untuk mengembalikan akun yang diretas, " +
-            "tapi metode yang digunakan adalah meretas akun pelaku atau menggunakan teknik phishing balik.",
-          questions: [
-            "Apakah tindakan tersebut termasuk cybercrime? Jelaskan kategori tindakannya.",
-            "Apa bedanya antara etika membantu korban dan menjadi pelaku cybercrime baru?",
-            "Bagaimana seharusnya profesional TI membantu kasus peretasan secara etis dan legal?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    },
-    {
-      id: "karaktercyber",
-      name: "6. Karakteristik Cybercrime",
-      short: "Karakteristik Cybercrime",
-      quests: [
-        {
-          title: "Serangan dari Negara Lain",
-          body:
-            "Sebuah e-commerce Indonesia terkena serangan DDoS dari server yang lokasinya tersebar di beberapa negara. " +
-            "Perusahaan kesulitan melacak pelaku aslinya.",
-          questions: [
-            "Sebutkan minimal tiga karakteristik cybercrime yang muncul dalam kasus ini.",
-            "Mengapa penegakan hukum terhadap cybercrime seringkali lebih sulit dibanding kejahatan konvensional?",
-            "Apa peran profesional TI dalam membantu proses investigasi tanpa melanggar hukum?"
-          ],
-          difficulty: "Menengah–Tinggi"
-        }
-      ]
-    },
-    {
-      id: "etikamaya",
-      name: "7. Etika di Dunia Maya",
-      short: "Etika Dunia Maya",
-      quests: [
-        {
-          title: "Grup Kelas yang Beracun",
-          body:
-            "Di grup chat kelas, beberapa mahasiswa membagikan meme yang menghina dosen dan teman sekelas " +
-            "dengan kata-kata kasar. Mereka beralasan 'cuma bercanda' dan grupnya bersifat privat.",
-          questions: [
-            "Apakah prinsip etika di dunia nyata berbeda dengan di dunia maya? Jelaskan.",
-            "Bagaimana konsep netiquette diterapkan pada kasus ini?",
-            "Apa potensi dampak psikologis dan profesional dari perilaku seperti ini?"
-          ],
-          difficulty: "Dasar–Menengah"
-        }
-      ]
-    },
-    {
-      id: "cyberlaw",
-      name: "8. Cyber Law & UU ITE",
-      short: "Cyber Law & UU ITE",
-      quests: [
-        {
-          title: "Review Produk yang Berujung Laporan",
-          body:
-            "Seorang pengguna menulis review negatif tentang sebuah produk di marketplace. " +
-            "Pemilik toko merasa dirugikan dan mengancam akan melaporkan dengan UU ITE.",
-          questions: [
-            "Bagaimana membedakan kritik yang sah dengan pencemaran nama baik dalam konteks UU ITE?",
-            "Apa peran etika ketika kita menulis pendapat di platform publik meski secara hukum mungkin masih 'aman'?",
-            "Sebagai profesional TI, bagaimana kalian akan merancang fitur review agar meminimalkan konflik seperti ini?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    },
-    {
-      id: "uuite",
-      name: "9. Undang-Undang ITE",
-      short: "UU ITE",
-      quests: [
-        {
-          title: "Share Ulang Konten Hoaks",
-          body:
-            "Seorang mahasiswa membagikan ulang (forward) sebuah info lowongan kerja palsu melalui grup kampus " +
-            "tanpa mengecek kebenarannya terlebih dahulu.",
-          questions: [
-            "Tindakan apa saja yang diatur UU ITE terkait penyebaran informasi bohong (hoaks)?",
-            "Secara etika, apakah 'tidak tahu' bisa dijadikan alasan pembenar?",
-            "Apa kebiasaan digital yang seharusnya dibangun untuk mencegah hal seperti ini?"
-          ],
-          difficulty: "Dasar–Menengah"
-        }
-      ]
-    },
-    {
-      id: "haki",
-      name: "10. Hak Kekayaan Intelektual (HAKI)",
-      short: "HAKI",
-      quests: [
-        {
-          title: "Template dan Desain Bajakan",
-          body:
-            "Sebuah agensi kecil menggunakan template website dan icon pack premium yang diunduh dari situs bajakan " +
-            "untuk klien berbayar.",
-          questions: [
-            "Hak kekayaan intelektual apa saja yang dilanggar dalam kasus ini?",
-            "Apa dampak jangka panjang bagi reputasi agensi dan klien jika ini terbongkar?",
-            "Bagaimana kebijakan internal yang seharusnya dimiliki perusahaan terkait penggunaan aset digital?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    },
-    {
-      id: "dimensihaki",
-      name: "11. Dimensi HAKI",
-      short: "Dimensi HAKI",
-      quests: [
-        {
-          title: "Software Kampus: Milik Siapa?",
-          body:
-            "Sebuah tim mahasiswa membuat sistem informasi untuk kampus sebagai bagian dari proyek akhir. " +
-            "Beberapa tahun kemudian, kampus mengkomersialkan sistem tersebut tanpa menyebut nama pembuat awal.",
-          questions: [
-            "Jelaskan dimensi ekonomi, moral, dan hukum dari HAKI dalam kasus ini.",
-            "Siapa saja pihak yang memiliki klaim atas hak cipta sistem tersebut?",
-            "Bagaimana seharusnya perjanjian HAKI diatur sejak awal antara kampus dan mahasiswa?"
-          ],
-          difficulty: "Menengah–Tinggi"
-        }
-      ]
-    },
-    {
-      id: "sertifikasi",
-      name: "12. Sertifikasi Keahlian TI",
-      short: "Sertifikasi TI",
-      quests: [
-        {
-          title: "Fresh Graduate vs Sertifikasi",
-          body:
-            "Seorang fresh graduate TI melamar ke perusahaan besar namun tidak memiliki sertifikasi resmi. " +
-            "Perusahaan lain yang lebih kecil menawarkan pekerjaan dengan syarat ia mau mengambil sertifikasi tertentu dalam 1 tahun.",
-          questions: [
-            "Apa manfaat sertifikasi keahlian TI bagi individu dan perusahaan?",
-            "Bagaimana hubungan antara sertifikasi, kompetensi nyata, dan etika profesi?",
-            "Kapan sertifikasi bisa menjadi sekadar formalitas, dan bagaimana menghindari itu?"
-          ],
-          difficulty: "Dasar–Menengah"
-        }
-      ]
-    },
-    {
-      id: "upayasertifikasi",
-      name: "13. Upaya Meraih Sertifikasi TI",
-      short: "Upaya Sertifikasi",
-      quests: [
-        {
-          title: "Curang di Ujian Sertifikasi",
-          body:
-            "Seorang profesional TI membayar orang lain untuk mengerjakan ujian sertifikasi online atas namanya, " +
-            "dengan alasan ia terlalu sibuk dan hanya butuh sertifikatnya saja.",
-          questions: [
-            "Apa konsekuensi etis dan profesional dari tindakan ini?",
-            "Bagaimana tindakan ini dapat merugikan industri TI secara luas?",
-            "Upaya apa yang etis untuk mempersiapkan diri meraih sertifikasi TI yang sulit?"
-          ],
-          difficulty: "Menengah"
-        }
-      ]
-    }
-  ];
+/* ==========================
+   BANK SOAL: 13 TOPIK × 3
+   (VERSI LEBIH SUSAH)
+===========================*/
+const topics = [
+  // 1. Filsafat Etika
+  {
+    id: "filsafat",
+    name: "1. Filsafat Etika",
+    short: "Filsafat Etika",
+    questions: [
+      {
+        scenario:
+          "Sebuah startup fintech menemukan celah yang membuat sebagian kecil transaksi berpotensi salah hitung saldo, tapi manajer berargumen: 'Secara statistik kecil kok, dan kalau kita tunda rilis, ribuan user lain tidak akan menikmati fitur baru ini.'",
+        question:
+          "Analisis mana yang paling kuat untuk MENOLAK rilis dari sudut pandang teori etika?",
+        options: [
+          {
+            label: "A",
+            text: "Utilitarianisme: rilis saja karena manfaat fitur bagi mayoritas user lebih besar dari kemungkinan kerugian minoritas.",
+            correct: false,
+            explanation:
+              "Ini bacaan utilitarianisme yang terlalu sempit: kerugian kecil tapi menyentuh hak finansial orang lain tidak bisa diabaikan begitu saja."
+          },
+          {
+            label: "B",
+            text: "Deontologi: ada kewajiban moral untuk tidak sengaja merilis sistem yang diketahui berpotensi merugikan hak milik user, meskipun probabilitasnya kecil.",
+            correct: true,
+            explanation:
+              "Deontologi fokus pada kewajiban dan larangan prinsipil: sengaja merilis sistem yang kita tahu berpotensi merugikan hak orang tetap salah, berapa pun probabilitasnya."
+          },
+          {
+            label: "C",
+            text: "Relativisme: kalau budaya perusahaan biasa menerima risiko seperti ini, maka secara moral keputusan manajer sah-sah saja.",
+            correct: false,
+            explanation:
+              "Relativisme seperti ini justru membuka pintu pembenaran massal atas praktik yang jelas melanggar hak pengguna."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Sebuah platform video menggunakan algoritma rekomendasi yang terbukti meningkatkan adiksi dan mengurangi produktivitas user, tapi juga meningkatkan engagement dan profit perusahaan secara signifikan.",
+        question:
+          "Dari kacamata utilitarianisme yang BENAR, evaluasi mana yang paling tepat?",
+        options: [
+          {
+            label: "A",
+            text: "Algoritma etis selama tidak melanggar hukum positif yang berlaku di negara tersebut.",
+            correct: false,
+            explanation:
+              "Utilitarianisme tidak berhenti di 'legal atau tidak', tapi menimbang total kebahagiaan dan penderitaan yang dihasilkan."
+          },
+          {
+            label: "B",
+            text: "Algoritma harus dievaluasi ulang karena peningkatan profit tidak boleh mengorbankan penurunan signifikan kesejahteraan psikologis dan produktivitas jutaan user.",
+            correct: true,
+            explanation:
+              "Utilitarianisme menimbang dampak menyeluruh pada kesejahteraan semua pihak, bukan hanya angka profit satu aktor ekonomi."
+          },
+          {
+            label: "C",
+            text: "Selama user menyetujui terms & conditions, semua konsekuensi penggunaan menjadi tanggung jawab user sendiri.",
+            correct: false,
+            explanation:
+              "Persetujuan formal tidak otomatis membuat semua konsekuensi utilitarian 'netral', apalagi bila ada asimetri informasi dan desain adiktif."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang programmer sadar bahwa praktik di perusahaannya melanggar privasi user, tetapi ia menenangkan diri dengan kalimat: 'Kalau aku nggak kerjain, orang lain juga akan kerjain hal yang sama di perusahaan lain.'",
+        question:
+          "Pola berpikir tersebut PALING TEPAT dikategorikan sebagai apa dalam filsafat etika terapan?",
+        options: [
+          {
+            label: "A",
+            text: "Moral disengagement / rationalization: memindahkan tanggung jawab pribadi dengan alasan 'semua orang juga begitu'.",
+            correct: true,
+            explanation:
+              "Ini contoh klasik rasionalisasi: ia tahu ada problem moral, tapi berusaha melepas rasa bersalah dengan membaurkannya ke 'sistem'."
+          },
+          {
+            label: "B",
+            text: "Konsekuensialisme murni: menilai baik–buruk hanya dari hasil akhir tanpa memerhatikan proses.",
+            correct: false,
+            explanation:
+              "Ia bukan sedang menghitung konsekuensi secara serius, tapi mencari pembenaran bahwa tindakannya tidak penting."
+          },
+          {
+            label: "C",
+            text: "Virtue ethics: fokus pada pembentukan karakter taat sistem demi stabilitas organisasi.",
+            correct: false,
+            explanation:
+              "Virtue ethics justru akan menekankan keberanian moral untuk menolak praktik yang salah meski sistem mendorong sebaliknya."
+          }
+        ]
+      }
+    ]
+  },
 
-  let currentRound = 1;
+  // 2. Profesi dan Profesionalisme
+  {
+    id: "profesi",
+    name: "2. Profesi dan Profesionalisme",
+    short: "Profesi & Profesionalisme",
+    questions: [
+      {
+        scenario:
+          "Seorang mahasiswa TI menerima proyek freelance membangun aplikasi kasir. Klien hanya berkata 'pokoknya jadi bulan depan' tanpa spesifikasi tertulis, dan sepakat bayar DP 20%. Di tengah jalan, klien menambah banyak fitur kompleks tanpa bicara soal biaya dan tenggat.",
+        question:
+          "Langkah mana yang PALING mencerminkan profesionalisme (bukan sekadar bertahan hidup)?",
+        options: [
+          {
+            label: "A",
+            text: "Menyelesaikan semua permintaan tambahan tanpa protes demi menjaga hubungan baik, lalu berharap klien memahami effort-nya.",
+            correct: false,
+            explanation:
+              "Ini terlihat 'baik', tapi tidak profesional: tidak ada kejelasan scope, biaya, dan batasan kerja."
+          },
+          {
+            label: "B",
+            text: "Menghentikan sementara pengembangan dan mengusulkan addendum/kontrak tertulis yang menjelaskan scope baru, biaya tambahan, dan revisi tenggat.",
+            correct: true,
+            explanation:
+              "Profesionalisme = kejelasan, dokumentasi, dan kesepakatan eksplisit, bukan sekadar mengalah."
+          },
+          {
+            label: "C",
+            text: "Meninggalkan proyek dan memutus komunikasi karena klien dianggap 'toxic' dan tidak menghargai developer.",
+            correct: false,
+            explanation:
+              "Ini mungkin menggambarkan emosi wajar, tapi secara profesional malah bisa merusak reputasi dan meninggalkan tanggung jawab."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang programmer mid-level menolak mengikuti pelatihan keamanan aplikasi dengan alasan: 'Toh ada tim security sendiri, tugas saya cuma bikin fitur jalan.'",
+        question:
+          "Dari perspektif profesionalisme TI, penilaian yang paling tepat adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Wajar, karena pembagian kerja di perusahaan modern memang memisah total antara developer dan security engineer.",
+            correct: false,
+            explanation:
+              "Memahami aspek dasar security tetap bagian dari tanggung jawab profesional developer, apalagi di era aplikasi online."
+          },
+          {
+            label: "B",
+            text: "Bermasalah, karena profesional TI wajib menjaga kompetensi minimal di area yang berdampak langsung pada kualitas dan keamanan produk.",
+            correct: true,
+            explanation:
+              "Continuous learning termasuk update di area yang berdampak langsung ke user, termasuk security fundamental."
+          },
+          {
+            label: "C",
+            text: "Tidak apa-apa, selama bug security bisa ditambal ketika sudah ditemukan oleh tim lain.",
+            correct: false,
+            explanation:
+              "Pendekatan reaktif seperti ini bertentangan dengan standar profesionalisme dan praktik secure-by-design."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Sebuah konsultan TI menawarkan implementasi sistem ERP ke klien UMKM. Ia tahu realistisnya butuh 6–8 bulan, tapi di proposal ia tulis 3 bulan 'supaya menang tender dulu, nanti sambil jalan dinegosiasi ulang'.",
+        question:
+          "Perilaku ini paling jelas melanggar aspek profesionalisme yang mana?",
+        options: [
+          {
+            label: "A",
+            text: "Transparansi dan kejujuran dalam mengkomunikasikan kapasitas dan estimasi realistis kepada klien.",
+            correct: true,
+            explanation:
+              "Memberikan janji yang sengaja tidak realistis untuk memenangkan proyek adalah pelanggaran integritas profesional."
+          },
+          {
+            label: "B",
+            text: "Kemampuan teknis coding di sisi backend dan database.",
+            correct: false,
+            explanation:
+              "Masalah utama bukan skill teknis, tapi kejujuran dalam menyampaikan batasan kapasitas."
+          },
+          {
+            label: "C",
+            text: "Kemampuan public speaking karena proposal disampaikan dalam bentuk presentasi.",
+            correct: false,
+            explanation:
+              "Presentasi boleh bagus, tapi isinya tetap tidak jujur. Problem etis bukan di skill presentasinya."
+          }
+        ]
+      }
+    ]
+  },
 
-  const scoreboardBody = document.getElementById("scoreboardBody");
-  const groupSelect = document.getElementById("groupSelect");
-  const topicSelect = document.getElementById("topicSelect");
-  const questBtn = document.getElementById("questBtn");
-  const questContainer = document.getElementById("questContainer");
-  const resetAllBtn = document.getElementById("resetAllBtn");
-  const roundInfo = document.getElementById("roundInfo");
-  const customScoreInput = document.getElementById("customScore");
-  const customScoreBtn = document.getElementById("customScoreBtn");
+  // 3. Profesi TI
+  {
+    id: "profesiti",
+    name: "3. Profesi TI",
+    short: "Profesi TI",
+    questions: [
+      {
+        scenario:
+          "Tim TI diminta mengembangkan sistem rekam medis. Salah satu anggota tim berargumen: 'Tugas kita cuma bikin aplikasi; soal siapa yang boleh lihat data pasien, biar rumah sakit yang atur.'",
+        question:
+          "Dari sudut pandang profesi TI, sikap yang paling tepat terhadap pernyataan tersebut adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Kurang tepat, karena profesional TI juga bertanggung jawab merancang kontrol akses dan mekanisme perlindungan data sensitif.",
+            correct: true,
+            explanation:
+              "Profesi TI tidak netral secara etis; desain teknis terkait langsung dengan perlindungan kerahasiaan pasien."
+          },
+          {
+            label: "B",
+            text: "Sudah benar, karena aspek kebijakan akses data sepenuhnya di luar lingkup profesi TI.",
+            correct: false,
+            explanation:
+              "Memisahkan total desain teknis dari tanggung jawab etis terhadap data sensitif adalah cara pandang yang keliru."
+          },
+          {
+            label: "C",
+            text: "Benar sepanjang tim TI tidak memiliki akses langsung ke database produksi.",
+            correct: false,
+            explanation:
+              "Akses teknis boleh dibatasi, tapi tanggung jawab profesional dalam merancang perlindungan tetap ada."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang software engineer di perusahaan fintech menyadari bahwa perubahan kecil di kode bisa membuka celah manipulasi saldo tanpa mudah terdeteksi. Ia tahu tidak ada orang lain yang akan mengecek bagian itu secara detail.",
+        question:
+          "Pernyataan mana yang paling kuat menggambarkan posisi profesi TI dalam situasi ini?",
+        options: [
+          {
+            label: "A",
+            text: "Ia hanya pekerja teknis, jadi secara etis bebas memanfaatkan peluang tersebut selama tidak ada aturan internal eksplisit yang melarang.",
+            correct: false,
+            explanation:
+              "Sebagai profesi, standar etis TI melampaui sekadar ketiadaan aturan eksplisit."
+          },
+          {
+            label: "B",
+            text: "Ia memegang posisi kepercayaan (trusted position) karena mengendalikan sistem yang menyangkut hak finansial orang lain.",
+            correct: true,
+            explanation:
+              "Profesi TI di sektor finansial sangat terkait dengan amanah besar terhadap dana dan data publik."
+          },
+          {
+            label: "C",
+            text: "Ia boleh mencoba eksploitasi kecil dulu untuk menguji apakah sistem auditor internal bekerja dengan baik.",
+            correct: false,
+            explanation:
+              "Menguji sistem dengan merugikan perusahaan/pelanggan tanpa izin bukan 'test', tapi penyalahgunaan."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang programmer diminta vendor luar negeri menambahkan backdoor rahasia dalam aplikasi pemerintah, dengan imbalan finansial besar dan janji identitasnya akan dilindungi.",
+        question:
+          "Dari sisi tanggung jawab profesi TI, konsekuensi utama jika ia menyetujuinya adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Hanya risiko teknis bila backdoor tersebut ternyata menimbulkan bug performa dan mudah dilacak.",
+            correct: false,
+            explanation:
+              "Dampaknya jauh melampaui sekadar bug: menyentuh keamanan publik dan kepercayaan terhadap institusi."
+          },
+          {
+            label: "B",
+            text: "Merusak kepercayaan publik terhadap sistem digital dan menunjukkan bahwa profesional TI bisa disuap untuk melemahkan keamanan nasional.",
+            correct: true,
+            explanation:
+              "Ini bentuk pengkhianatan terhadap amanah profesi dan bisa berdampak sistemik pada kepercayaan publik."
+          },
+          {
+            label: "C",
+            text: "Tidak terlalu berpengaruh terhadap profesi, karena kasus seperti ini sulit dibuktikan secara hukum.",
+            correct: false,
+            explanation:
+              "Standar profesi tidak menunggu pembuktian hukum; tindakan itu sendiri sudah pelanggaran berat."
+          }
+        ]
+      }
+    ]
+  },
 
-  // ====== LOCAL STORAGE: SAVE & LOAD ======
-  function saveState() {
-    try {
-      const data = {
-        groups: groups.map(g => ({
-          id: g.id,
-          name: g.name,
-          score: g.score
-        })),
-        currentRound
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    } catch (e) {
-      console.warn("Gagal menyimpan ke localStorage:", e);
-    }
+  // 4. Kode Etik Profesi TI
+  {
+    id: "kodeetik",
+    name: "4. Kode Etik Profesi TI",
+    short: "Kode Etik TI",
+    questions: [
+      {
+        scenario:
+          "Seorang admin sistem diminta oleh direktur untuk membuka dan mencetak seluruh isi email salah satu karyawan 'yang dicurigai', tanpa ada surat resmi, tanpa keterlibatan HR atau bagian hukum.",
+        question:
+          "Respon mana yang PALING sejalan dengan prinsip umum kode etik profesi TI?",
+        options: [
+          {
+            label: "A",
+            text: "Mengikuti perintah segera, karena direktur adalah atasan tertinggi dan dianggap otomatis mewakili kepentingan perusahaan.",
+            correct: false,
+            explanation:
+              "Hierarki organisasi tidak menghapus kewajiban menjaga privasi dan prosedur formal."
+          },
+          {
+            label: "B",
+            text: "Menolak secara profesional dan meminta prosedur resmi tertulis (misalnya surat tugas/hukum internal) sebelum memberikan akses.",
+            correct: true,
+            explanation:
+              "Ini menjaga keseimbangan antara kepatuhan terhadap organisasi dan perlindungan hak privasi karyawan."
+          },
+          {
+            label: "C",
+            text: "Memberikan akses beberapa email saja agar 'kompromi' dan tidak terlalu melanggar privasi.",
+            correct: false,
+            explanation:
+              "Kompromi setengah-setengah tetap tidak menghapus pelanggaran prosedur dan privasi."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang developer mengetahui bahwa rekannya rutin meng-copy paste modul berlisensi GPL ke dalam produk proprietary perusahaan, lalu menghapus header lisensi agar terlihat seperti kode internal.",
+        question:
+          "Apa kewajiban etik yang paling relevan dalam situasi ini?",
+        options: [
+          {
+            label: "A",
+            text: "Diam demi menjaga kekompakan tim, karena mengungkap masalah dapat mengganggu suasana kerja.",
+            correct: false,
+            explanation:
+              "Kekompakan yang dibangun di atas pelanggaran etika dan lisensi justru merusak profesionalisme."
+          },
+          {
+            label: "B",
+            text: "Melaporkan secara berjenjang (misalnya ke lead/atasan langsung) karena ada potensi pelanggaran lisensi dan reputasi profesi.",
+            correct: true,
+            explanation:
+              "Kode etik biasanya menuntut pelaporan pelanggaran signifikan yang berpotensi merugikan organisasi dan publik."
+          },
+          {
+            label: "C",
+            text: "Mengikuti cara yang sama agar beban kerja pribadi berkurang dan produktivitas tim terlihat tinggi.",
+            correct: false,
+            explanation:
+              "Ikut melanggar demi kenyamanan jangka pendek memperparah masalah dan melanggar integritas profesi."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang konsultan TI merekomendasikan vendor tertentu dalam dokumen resmi, tanpa mengungkap bahwa ia menerima komisi pribadi dari vendor tersebut jika klien jadi membeli.",
+        question:
+          "Pasal umum kode etik yang PALING jelas dilanggar adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Kewajiban menjaga kerahasiaan data internal klien.",
+            correct: false,
+            explanation:
+              "Isu utamanya bukan kerahasiaan, melainkan motif tersembunyi dalam rekomendasi profesional."
+          },
+          {
+            label: "B",
+            text: "Kewajiban menghindari dan mengungkap konflik kepentingan kepada klien.",
+            correct: true,
+            explanation:
+              "Profesional wajib transparan ketika ada kepentingan pribadi yang bisa memengaruhi rekomendasi."
+          },
+          {
+            label: "C",
+            text: "Kewajiban menjaga independensi politik di tempat kerja.",
+            correct: false,
+            explanation:
+              "Ini tidak berkaitan dengan preferensi politik."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 5. Cybercrime
+  {
+    id: "cybercrime",
+    name: "5. Cybercrime",
+    short: "Cybercrime",
+    questions: [
+      {
+        scenario:
+          "Temanmu kehilangan akses ke akunnya karena di-hack. Kamu punya kemampuan teknis dan menawarkan: 'Biar gue retas balik aja akun si pelaku, sekalian gue ambil datanya sebagai balasan.'",
+        question:
+          "Penilaian mana yang paling tepat secara etis dan legal?",
+        options: [
+          {
+            label: "A",
+            text: "Boleh saja, karena ini bentuk pembalasan yang proporsional terhadap pelaku pertama.",
+            correct: false,
+            explanation:
+              "Membalas pelanggaran hukum dengan pelanggaran baru tetap menjadikanmu pelaku kejahatan."
+          },
+          {
+            label: "B",
+            text: "Termasuk cybercrime, karena melakukan akses ilegal ke sistem orang lain meskipun korbannya adalah pelaku awal.",
+            correct: true,
+            explanation:
+              "Hukum dan etika tidak melegalkan vigilantisme digital seperti ini."
+          },
+          {
+            label: "C",
+            text: "Netral, karena konflik hanya terjadi antara dua individu dan tidak menyentuh pihak ketiga.",
+            correct: false,
+            explanation:
+              "Dampaknya bisa meluas dan status hukumnya tidak berubah hanya karena korbannya pelaku pertama."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seseorang membuat website tiruan yang sangat mirip dengan portal pembayaran resmi kampus, lengkap dengan logo dan tampilan, lalu menyebarkan link ke grup mahasiswa.",
+        question:
+          "Klasifikasi cybercrime apa yang paling tepat?",
+        options: [
+          {
+            label: "A",
+            text: "Phishing",
+            correct: true,
+            explanation:
+              "Desain tiruan untuk mencuri username/password adalah ciri klasik phishing."
+          },
+          {
+            label: "B",
+            text: "Defacement",
+            correct: false,
+            explanation:
+              "Ia tidak mengubah situs asli, tapi membuat situs palsu yang mirip."
+          },
+          {
+            label: "C",
+            text: "Spamming",
+            correct: false,
+            explanation:
+              "Pendistribusian massal hanyalah sarana; inti kejahatannya ada pada penipuan laman login."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang karyawan yang sakit hati sebelum resign masuk ke server produksi pada malam hari, menghapus database pelanggan dan backup terbaru, lalu meninggalkan pesan ancaman di sistem.",
+        question:
+          "Ini paling tepat digolongkan sebagai jenis cybercrime apa?",
+        options: [
+          {
+            label: "A",
+            text: "Data destruction yang dilakukan orang dalam (insider threat).",
+            correct: true,
+            explanation:
+              "Ia dengan sengaja merusak asset digital organisasi sebagai bentuk sabotase."
+          },
+          {
+            label: "B",
+            text: "Carding karena menyangkut data pelanggan yang berhubungan dengan transaksi.",
+            correct: false,
+            explanation:
+              "Carding spesifik pada penyalahgunaan kartu kredit, bukan sekadar penghapusan data."
+          },
+          {
+            label: "C",
+            text: "Hacking karena ia punya previllege akses resmi ke server.",
+            correct: false,
+            explanation:
+              "Akses resmi tidak membenarkan tindakan merusak yang disengaja."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 6. Karakteristik Cybercrime
+  {
+    id: "karaktercyber",
+    name: "6. Karakteristik Cybercrime",
+    short: "Karakteristik Cybercrime",
+    questions: [
+      {
+        scenario:
+          "Sebuah marketplace di Indonesia lumpuh karena serangan DDoS. Log menunjukkan traffic datang dari ribuan IP di berbagai negara, banyak di antaranya adalah perangkat rumahan yang terinfeksi.",
+        question:
+          "Karakteristik cybercrime apa yang PALING menonjol di kasus ini?",
+        options: [
+          {
+            label: "A",
+            text: "Lintas batas dan sulit dilacak karena melibatkan banyak perangkat 'zombie' dari berbagai yurisdiksi.",
+            correct: true,
+            explanation:
+              "Serangan terdistribusi lintas negara dan memakai perangkat pihak ketiga yang tidak sadar."
+          },
+          {
+            label: "B",
+            text: "Terbatas lokal karena targetnya hanya perusahaan Indonesia.",
+            correct: false,
+            explanation:
+              "Target boleh lokal, tapi pola serangan dan sumbernya lintas batas."
+          },
+          {
+            label: "C",
+            text: "Hanya menimbulkan kerusakan fisik pada server, bukan gangguan layanan.",
+            correct: false,
+            explanation:
+              "Justru dampak utama DDoS adalah gangguan layanan digital."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Penjahat siber mengendalikan botnet dari negara A, menggunakan server perantara di negara B, dan menyerang korban di negara C. Komputer yang dipakai menyerang milik user biasa yang tidak sadar perangkatnya terinfeksi.",
+        question:
+          "Karakteristik penting cybercrime yang tercermin di sini adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Kebutuhan pelaku untuk selalu hadir secara fisik dekat dengan korban.",
+            correct: false,
+            explanation:
+              "Cybercrime justru memanfaatkan jarak dan ketersembunyian."
+          },
+          {
+            label: "B",
+            text: "Pemanfaatan komputer pihak ketiga yang tidak tahu-menahu sebagai alat serangan, sekaligus sifat lintas negara yang mempersulit penegakan hukum.",
+            correct: true,
+            explanation:
+              "Inilah kombinasi khas: botnet + multi-yurisdiksi."
+          },
+          {
+            label: "C",
+            text: "Ketiadaan bukti digital sehingga sulit ditelusuri jejaknya.",
+            correct: false,
+            explanation:
+              "Bukti digital ada, hanya saja disamarkan lewat banyak lapisan."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Dalam proses forensik digital, tim keamanan menemukan jejak akses melalui beberapa lapis VPN, proxy, dan jaringan anonim lain yang saling berantai.",
+        question:
+          "Hal ini menunjukkan karakteristik apa dari cybercrime modern?",
+        options: [
+          {
+            label: "A",
+            text: "Obfuscation dan anonimitas tinggi yang secara sengaja dirancang untuk menyulitkan atribusi pelaku.",
+            correct: true,
+            explanation:
+              "Pelaku sengaja menciptakan 'noise' dan lapisan-lapisan perantara untuk mengaburkan identitas sebenarnya."
+          },
+          {
+            label: "B",
+            text: "Jumlah bukti digital yang sangat sedikit sehingga nyaris mustahil melakukan analisis forensik.",
+            correct: false,
+            explanation:
+              "Bukti tetap ada, tapi jalurnya berliku. Tantangannya di kompleksitas, bukan ketiadaan."
+          },
+          {
+            label: "C",
+            text: "Ketergantungan penuh pada saksi mata manusia untuk mengungkap pelaku.",
+            correct: false,
+            explanation:
+              "Forensik cyber mengandalkan artefak digital, bukan saksi mata fisik."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 7. Etika di Dunia Maya
+  {
+    id: "etikamaya",
+    name: "7. Etika di Dunia Maya",
+    short: "Etika Dunia Maya",
+    questions: [
+      {
+        scenario:
+          "Di grup WhatsApp kelas, beberapa mahasiswa membuat meme yang menghina fisik teman sekelas dan menyindir kehidupan pribadinya. Mereka berdalih: 'Ini kan cuma grup internal, nggak di-post ke publik.'",
+        question:
+          "Dari sudut pandang etika digital, pelanggaran utama ada pada...",
+        options: [
+          {
+            label: "A",
+            text: "Kurangnya kemampuan teknis mengatur pengaturan privasi di WhatsApp.",
+            correct: false,
+            explanation:
+              "Masalah bukan di skill teknis, tapi pada sikap terhadap martabat orang lain."
+          },
+          {
+            label: "B",
+            text: "Tidak menghormati martabat, reputasi, dan batasan kenyamanan orang lain meski di ruang digital yang dianggap 'privat'.",
+            correct: true,
+            explanation:
+              "Privat atau publik, etika tetap menuntut penghormatan terhadap orang lain."
+          },
+          {
+            label: "C",
+            text: "Penggunaan meme sebagai bentuk komunikasi di perkuliahan.",
+            correct: false,
+            explanation:
+              "Meme sebagai medium netral; isinya yang bermasalah."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang mahasiswa meng-screenshot chat pribadi temannya yang curhat soal masalah keluarga, lalu mempostingnya di Instagram Story tanpa menutupi identitas dan tanpa izin.",
+        question:
+          "Masalah utama secara etika di dunia maya adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Pelanggaran serius terhadap privasi dan kepercayaan dalam komunikasi interpersonal.",
+            correct: true,
+            explanation:
+              "Chat pribadi punya ekspektasi kerahasiaan; menyebarkannya tanpa izin merusak trust."
+          },
+          {
+            label: "B",
+            text: "Hanya masalah estetika tampilan karena screenshot tidak diedit dengan rapi.",
+            correct: false,
+            explanation:
+              "Estetika sama sekali tidak relevan di sini."
+          },
+          {
+            label: "C",
+            text: "Tidak masalah asalkan pengikut di Instagram relatif sedikit.",
+            correct: false,
+            explanation:
+              "Jumlah audiens tidak menghapus pelanggaran privasi."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang pengguna membuat akun anonim di Twitter/X untuk mengkritik kebijakan kampus. Ia menyertakan data, sumber, dan bahasa yang relatif santun, tetapi memilih anonim karena takut ada tekanan dari pihak kampus.",
+        question:
+          "Penilaian etis yang paling seimbang terhadap tindakan ini adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Secara otomatis salah karena segala bentuk anonimitas di internet tidak etis.",
+            correct: false,
+            explanation:
+              "Anonimitas tidak identik dengan ketidak-etisan; tergantung cara digunakannya."
+          },
+          {
+            label: "B",
+            text: "Dapat diterima sejauh kritiknya berbasis fakta, tidak menghina personal, dan tidak menyebarkan hoaks.",
+            correct: true,
+            explanation:
+              "Ini contoh penggunaan anonim untuk melindungi diri sambil tetap menjaga standar etis isi kritik."
+          },
+          {
+            label: "C",
+            text: "Selalu benar tanpa syarat karena dilindungi konsep 'kebebasan berekspresi'.",
+            correct: false,
+            explanation:
+              "Kebebasan berekspresi tetap terikat tanggung jawab etis, misalnya tidak boleh memfitnah."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 8. Cyber Law dan UU ITE
+  {
+    id: "cyberlaw",
+    name: "8. Cyber Law dan UU ITE",
+    short: "Cyber Law & UU ITE",
+    questions: [
+      {
+        scenario:
+          "Seorang konsumen menulis review di marketplace: isinya bukan hanya mengkritik kualitas produk, tetapi juga menghina fisik dan menuduh pemilik toko dengan kata-kata yang tidak bisa dibuktikan.",
+        question:
+          "Dalam perspektif cyber law & UU ITE, risiko utama yang muncul adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Potensi masuk ke ranah pencemaran nama baik dan/atau penghinaan melalui media elektronik.",
+            correct: true,
+            explanation:
+              "Kritik produk boleh, tapi menyerang kehormatan pribadi dengan tuduhan tak berdasar bisa terkena pasal tertentu di UU ITE."
+          },
+          {
+            label: "B",
+            text: "Hanya masalah etika konsumen, karena hukum tidak mengatur review online.",
+            correct: false,
+            explanation:
+              "UU ITE secara eksplisit menyentuh konten di ruang elektronik, termasuk media sosial/ulasan."
+          },
+          {
+            label: "C",
+            text: "Tidak ada risiko hukum bila review hanya ditulis sekali, bukan berulang-ulang.",
+            correct: false,
+            explanation:
+              "Frekuensi tidak menghapus unsur pencemaran/fitnah jika syarat lainnya terpenuhi."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Di sebuah grup Facebook, anggota menuliskan komentar: 'Orang ini pantas dipukul sampai cacat' sambil menyebut nama dan membagikan fotonya. Admin grup membiarkan komentar tersebut tetap tampil selama berhari-hari.",
+        question:
+          "Apa yang perlu diperhatikan dalam perspektif cyber law?",
+        options: [
+          {
+            label: "A",
+            text: "Ancaman kekerasan fisik di media sosial bisa masuk ke ranah pidana meskipun belum ada tindakan nyata.",
+            correct: true,
+            explanation:
+              "Ucapan ancaman serius tidak dianggap 'candaan' hanya karena di dunia maya."
+          },
+          {
+            label: "B",
+            text: "Karena hanya komentar teks, maka tidak dapat diproses secara hukum.",
+            correct: false,
+            explanation:
+              "Konten elektronik (teks, gambar, dll.) justru menjadi objek utama UU ITE."
+          },
+          {
+            label: "C",
+            text: "Admin grup sama sekali tidak punya kewajiban moral maupun legal untuk moderasi konten.",
+            correct: false,
+            explanation:
+              "Dalam beberapa kasus, pengelola platform dapat dimintai pertanggungjawaban terkait kebijakan moderasi."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seseorang mengedit foto orang lain sehingga tampak berada di tempat dan situasi memalukan, lalu menyebarkannya di media sosial untuk menjatuhkan reputasi orang tersebut.",
+        question:
+          "Ini paling terkait dengan aspek apa dalam cyber law?",
+        options: [
+          {
+            label: "A",
+            text: "Pencemaran nama baik dan penghinaan melalui informasi elektronik.",
+            correct: true,
+            explanation:
+              "Manipulasi image yang merusak reputasi jelas berkaitan dengan pasal-pasal penghinaan/pencemaran."
+          },
+          {
+            label: "B",
+            text: "Semata-mata pelanggaran hak cipta atas foto asli.",
+            correct: false,
+            explanation:
+              "Hak cipta mungkin relevan, tapi konteks utama soal pencemaran nama baik."
+          },
+          {
+            label: "C",
+            text: "Hanya masalah selera humor dan kreativitas editing.",
+            correct: false,
+            explanation:
+              "Kreativitas tidak membenarkan perusakan reputasi orang lain."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 9. UU ITE
+  {
+    id: "uuite",
+    name: "9. Undang-Undang ITE",
+    short: "UU ITE",
+    questions: [
+      {
+        scenario:
+          "Mahasiswa mendapat pesan berantai berisi lowongan kerja bergaji tinggi yang meminta calon pelamar mengirim data pribadi lengkap dan biaya administrasi. Tanpa cek sumber, ia meneruskan pesan itu ke banyak grup kampus.",
+        question:
+          "Sikap yang paling tepat terkait UU ITE dan etika digital adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Menghentikan kebiasaan forward otomatis dan memeriksa kebenaran informasi sebelum menyebarkannya.",
+            correct: true,
+            explanation:
+              "Penyebaran informasi bohong/menyesatkan bisa punya konsekuensi hukum dan etis."
+          },
+          {
+            label: "B",
+            text: "Tetap menyebarkan selama ia mencantumkan kalimat 'share dari grup sebelah'.",
+            correct: false,
+            explanation:
+              "Mencantumkan sumber tidak menghapus tanggung jawab atas penyebaran hoaks."
+          },
+          {
+            label: "C",
+            text: "Menghapus chat sendiri setelah tahu hoaks tanpa perlu mengklarifikasi ke orang lain.",
+            correct: false,
+            explanation:
+              "Kalau sudah terlanjur menyebarkan, seharusnya ada usaha koreksi/minimal peringatan."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seseorang mengedit screenshot percakapan WhatsApp sehingga seolah-olah lawan bicara mengucapkan kata-kata rasis, lalu menyebarkannya ke media sosial sebagai 'bukti' untuk menjatuhkan orang tersebut.",
+        question:
+          "Masalah utama dalam konteks UU ITE adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Sekadar kreativitas editing gambar tanpa konsekuensi hukum.",
+            correct: false,
+            explanation:
+              "Editing yang mengubah makna dan mencemarkan nama baik jelas bermasalah."
+          },
+          {
+            label: "B",
+            text: "Penyebaran informasi bohong/disinformasi yang merugikan reputasi seseorang melalui media elektronik.",
+            correct: true,
+            explanation:
+              "Ini kombinasi hoaks + pencemaran nama baik via kanal elektronik."
+          },
+          {
+            label: "C",
+            text: "Tidak berbahaya jika hanya dilihat oleh sedikit orang.",
+            correct: false,
+            explanation:
+              "Dampak bisa besar meskipun audiens awal kecil karena konten bisa menyebar lebih jauh."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Admin sebuah website menyimpan log IP, waktu akses, dan request user untuk tujuan keamanan. Data log disimpan terbatas dan hanya diakses saat terjadi insiden.",
+        question:
+          "Dalam kerangka UU ITE dan praktik baik, tindakan ini dinilai...",
+        options: [
+          {
+            label: "A",
+            text: "Diperbolehkan selama digunakan proporsional untuk keamanan dan dikelola dengan perlindungan data yang memadai.",
+            correct: true,
+            explanation:
+              "Logging adalah praktik standar keamanan; yang penting cara penyimpanan dan penggunaannya."
+          },
+          {
+            label: "B",
+            text: "Selalu dilarang karena menyimpan data pengguna sama dengan melanggar privasi.",
+            correct: false,
+            explanation:
+              "Larangan bukan pada pencatatan log itu sendiri, melainkan pada penyalahgunaan atau kebocorannya."
+          },
+          {
+            label: "C",
+            text: "Tidak ada kaitannya sama sekali dengan ranah UU ITE.",
+            correct: false,
+            explanation:
+              "Log adalah informasi elektronik yang justru sering jadi alat bukti di kasus-kasus UU ITE."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 10. HAKI
+  {
+    id: "haki",
+    name: "10. Hak Kekayaan Intelektual (HAKI)",
+    short: "HAKI",
+    questions: [
+      {
+        scenario:
+          "Sebuah agensi desain menggunakan font premium dan template grafis bajakan yang diunduh dari situs ilegal untuk proyek kampanye besar klien korporat.",
+        question:
+          "Pelanggaran utama dalam perspektif HAKI adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Tidak menyebut nama pembuat font dan template di halaman kredit.",
+            correct: false,
+            explanation:
+              "Kredit penting, tapi di sini masalah utamanya lebih fundamental."
+          },
+          {
+            label: "B",
+            text: "Menggunakan karya berlisensi berbayar tanpa lisensi sah, baik untuk pemakaian internal maupun komersial.",
+            correct: true,
+            explanation:
+              "Ini pelanggaran hak cipta: memanfaatkan karya tanpa izin dan tanpa membayar lisensi."
+          },
+          {
+            label: "C",
+            text: "Mengubah warna template agar sesuai brand klien.",
+            correct: false,
+            explanation:
+              "Modifikasi warna tidak menghapus kewajiban memiliki lisensi."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Mahasiswa mengunduh e-book berbayar dari situs bajakan dan mengunggah file tersebut di Google Drive untuk dibagikan ke seluruh angkatan.",
+        question:
+          "Tindakan ini paling tepat dikategorikan sebagai...",
+        options: [
+          {
+            label: "A",
+            text: "Pelanggaran hak cipta atas karya tulis dalam bentuk digital.",
+            correct: true,
+            explanation:
+              "Format digital tidak menghilangkan perlindungan hak cipta."
+          },
+          {
+            label: "B",
+            text: "Hanya pelanggaran etika belajar, tidak berkaitan dengan HAKI.",
+            correct: false,
+            explanation:
+              "Hak cipta tetap berlaku meski tujuannya 'untuk belajar bersama'."
+          },
+          {
+            label: "C",
+            text: "Masalah utama hanya pada kapasitas penyimpanan Google Drive.",
+            correct: false,
+            explanation:
+              "Isu teknis storage jelas bukan masalah inti di sini."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang developer mengambil template UI open-source dengan lisensi yang MELARANG penggunaan komersial tanpa izin, lalu menjualnya ulang sebagai produk berbayar di marketplace.",
+        question:
+          "Apa yang keliru dalam konteks HAKI?",
+        options: [
+          {
+            label: "A",
+            text: "Beranggapan bahwa semua proyek open-source otomatis bebas digunakan untuk tujuan apa pun, termasuk dijual ulang.",
+            correct: true,
+            explanation:
+              "Open-source punya banyak jenis lisensi; sebagian ada batasan komersialisasi yang harus dihormati."
+          },
+          {
+            label: "B",
+            text: "Menggunakan bahasa Inggris di dokumentasi lisensi.",
+            correct: false,
+            explanation:
+              "Bahasa dokumentasi tidak relevan dengan pelanggaran hak cipta."
+          },
+          {
+            label: "C",
+            text: "Menambahkan fitur baru sebelum menjual ulang.",
+            correct: false,
+            explanation:
+              "Menambah fitur tidak menghapus kewajiban mematuhi lisensi dasar."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 11. Dimensi HAKI
+  {
+    id: "dimensihaki",
+    name: "11. Dimensi HAKI",
+    short: "Dimensi HAKI",
+    questions: [
+      {
+        scenario:
+          "Mahasiswa membuat sistem informasi akademik sebagai tugas akhir. Beberapa tahun kemudian kampus mengomersialkan sistem tersebut ke sekolah-sekolah lain tanpa menyebut nama mahasiswa dan tanpa perjanjian bagi hasil.",
+        question:
+          "Dimensi HAKI apa yang paling jelas bermasalah?",
+        options: [
+          {
+            label: "A",
+            text: "Dimensi moral (hak pengakuan sebagai pencipta) dan dimensi ekonomi (potensi manfaat finansial).",
+            correct: true,
+            explanation:
+              "Keduanya diabaikan: nama pembuat hilang, keuntungan ekonomi tidak dibicarakan."
+          },
+          {
+            label: "B",
+            text: "Dimensi teknis terkait kualitas kode yang tidak di-refactor.",
+            correct: false,
+            explanation:
+              "Teknis bisa jadi masalah, tapi bukan isu HAKI utama di skenario ini."
+          },
+          {
+            label: "C",
+            text: "Dimensi estetika karena UI tidak mengikuti tren terkini.",
+            correct: false,
+            explanation:
+              "Estetika UI bukan inti persoalan hak kekayaan intelektual di sini."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang ilustrator mengizinkan karyanya dipakai gratis untuk kampanye sosial non-profit, tetapi secara eksplisit melarang penggunaan untuk iklan komersial tanpa kontrak baru.",
+        question:
+          "Perbedaan perlakuan ini menunjukkan apa terkait dimensi HAKI?",
+        options: [
+          {
+            label: "A",
+            text: "Pemilik karya berhak mengatur dimensi ekonomi karyanya berbeda-beda untuk konteks sosial dan komersial.",
+            correct: true,
+            explanation:
+              "Hak moral dan ekonomi memungkinkan pemilik menentukan syarat penggunaan dalam berbagai konteks."
+          },
+          {
+            label: "B",
+            text: "Karya yang digunakan untuk tujuan sosial otomatis bukan lagi objek HAKI.",
+            correct: false,
+            explanation:
+              "Tetap objek HAKI, hanya lisensinya yang dibuat longgar untuk tujuan tertentu."
+          },
+          {
+            label: "C",
+            text: "Pengguna bebas mengabaikan ketentuan tersebut jika merasa tujuannya baik dan bermanfaat.",
+            correct: false,
+            explanation:
+              "Niat baik tidak menghapus kewajiban menghormati ketentuan pemilik hak."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Perusahaan membeli lisensi software desain legal. Namun, perusahaan melarang desainer mencantumkan namanya di portofolio pribadi untuk karya yang dibuat menggunakan software tersebut.",
+        question:
+          "Dimensi mana yang diabaikan dalam kebijakan ini?",
+        options: [
+          {
+            label: "A",
+            text: "Dimensi moral: hak untuk diakui sebagai pencipta karya desain.",
+            correct: true,
+            explanation:
+              "Hak moral tidak otomatis hilang hanya karena software dan lisensi dimiliki perusahaan."
+          },
+          {
+            label: "B",
+            text: "Dimensi teknis: hak untuk melakukan update software ke versi terbaru.",
+            correct: false,
+            explanation:
+              "Kebijakan ini tidak berbicara soal update teknis sama sekali."
+          },
+          {
+            label: "C",
+            text: "Dimensi estetika: kebebasan memilih warna dan layout.",
+            correct: false,
+            explanation:
+              "Warna/layout bukan inti persoalan hak moral penulis/pembuat."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 12. Sertifikasi Keahlian TI
+  {
+    id: "sertifikasi",
+    name: "12. Sertifikasi Keahlian TI",
+    short: "Sertifikasi TI",
+    questions: [
+      {
+        scenario:
+          "Seorang profesional TI membayar orang lain untuk mengikuti ujian sertifikasi keamanan jaringan online atas namanya. Sertifikat berhasil diperoleh dan digunakan untuk promosi jabatan.",
+        question:
+          "Dampak paling serius dari perspektif profesi TI adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Menurunkan kepercayaan terhadap sertifikasi sebagai indikator kompetensi nyata.",
+            correct: true,
+            explanation:
+              "Kalau praktik ini meluas, sertifikasi kehilangan makna dan merusak reputasi profesi."
+          },
+          {
+            label: "B",
+            text: "Berpotensi membuat perusahaan menaikkan standar ujian internal.",
+            correct: false,
+            explanation:
+              "Dampaknya sistemik terhadap profesi, bukan sekadar kebijakan internal satu perusahaan."
+          },
+          {
+            label: "C",
+            text: "Meningkatkan pendapatan lembaga sertifikasi dan menguntungkan lembaga.",
+            correct: false,
+            explanation:
+              "Pendapatan lembaga bukan fokus etis di sini."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Seorang fresh graduate menulis di CV bahwa ia memiliki sertifikasi internasional X, padahal statusnya baru 'registered' dan belum mengikuti ujian.",
+        question:
+          "Secara etis, tindakan ini paling tepat dinilai sebagai...",
+        options: [
+          {
+            label: "A",
+            text: "Misrepresentasi yang merusak kepercayaan rekruter terhadap CV dan sertifikasi.",
+            correct: true,
+            explanation:
+              "CV seharusnya memuat fakta, bukan keinginan atau rencana."
+          },
+          {
+            label: "B",
+            text: "Boleh saja, karena ia sudah berniat mengikuti ujian dalam waktu dekat.",
+            correct: false,
+            explanation:
+              "Niat tidak boleh ditulis seolah-olah sudah menjadi pencapaian."
+          },
+          {
+            label: "C",
+            text: "Netral secara etis selama IPK-nya tinggi.",
+            correct: false,
+            explanation:
+              "Prestasi lain tidak menutupi tindakan menyesatkan di bagian lain CV."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Perusahaan mewajibkan beberapa staf TI mengambil sertifikasi cloud yang biaya ujiannya mahal. Perusahaan berniat menanggung biaya, tetapi juga mensyaratkan komitmen kerja minimal 2 tahun setelah lulus.",
+        question:
+          "Agar kebijakan ini etis, perusahaan sebaiknya...",
+        options: [
+          {
+            label: "A",
+            text: "Menjelaskan secara transparan manfaat sertifikasi bagi karyawan dan perusahaan, serta membuat perjanjian yang wajar terkait ikatan dinas.",
+            correct: true,
+            explanation:
+              "Kunci etisnya ada pada transparansi, kewajaran, dan kesepakatan sukarela."
+          },
+          {
+            label: "B",
+            text: "Perusahaan ingin karyawan membayar penuh biaya sertifikasi, lalu mendukung keberhasilan karyawan dengan memberi course gratis.",
+            correct: false,
+            explanation:
+              "Jika sertifikasi diwajibkan untuk kepentingan perusahaan, wajar kalau perusahaan ikut menanggung beban."
+          },
+          {
+            label: "C",
+            text: "Melarang karyawan mengikuti sertifikasi agar tidak berisiko pindah ke perusahaan lain.",
+            correct: false,
+            explanation:
+              "Menghalangi pengembangan kompetensi demi menahan karyawan jelas tidak etis."
+          }
+        ]
+      }
+    ]
+  },
+
+  // 13. Upaya Meraih Sertifikasi TI
+  {
+    id: "upayasertifikasi",
+    name: "13. Upaya Meraih Sertifikasi TI",
+    short: "Upaya Sertifikasi",
+    questions: [
+      {
+        scenario:
+          "Seorang mahasiswa ingin cepat lulus sertifikasi keamanan jaringan yang sulit demi meningkatkan nilai jual CV. Ia menemukan 'dump soal' yang berisi kumpulan pertanyaan dan jawaban asli ujian.",
+        question:
+          "Upaya mana yang paling etis dan konstruktif untuk meraih sertifikasi tersebut?",
+        options: [
+          {
+            label: "A",
+            text: "Mengandalkan dump soal sebagai bahan utama belajar agar probabilitas lulus tinggi.",
+            correct: false,
+            explanation:
+              "Ini merusak integritas ujian dan membuat sertifikasi tidak lagi mencerminkan kompetensi."
+          },
+          {
+            label: "B",
+            text: "Menyusun jadwal belajar rutin dengan materi resmi, praktik lab, dan simulasi ujian yang sah.",
+            correct: true,
+            explanation:
+              "Fokus ke penguasaan konsep dan skill, bukan sekadar hafal kunci jawaban."
+          },
+          {
+            label: "C",
+            text: "Mendaftar ujian berkali-kali dengan persiapan khusus sampai kebetulan lulus.",
+            correct: false,
+            explanation:
+              "Ini hanya membuang biaya dan tidak meningkatkan kompetensi nyata."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Suatu kelompok belajar sertifikasi membagi topik: satu orang fokus networking, satu keamanan, satu cloud. Mereka saling mengajar dan tukar catatan, tetapi saat ujian semua mengerjakan sendiri tanpa komunikasi.",
+        question:
+          "Penilaian etis terhadap strategi ini adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Dapat diterima, karena kolaborasi dapat memperdalam pemahaman masing-masing.",
+            correct: true,
+            explanation:
+              "Yang dilarang adalah kolusi saat ujian, bukan belajar bersama sebelum ujian."
+          },
+          {
+            label: "B",
+            text: "Setara dengan mencontek karena pengetahuan dibagi secara tidak merata.",
+            correct: false,
+            explanation:
+              "Pengetahuan memang dibangun bersama; yang penting ujian dikerjakan mandiri."
+          },
+          {
+            label: "C",
+            text: "Hanya boleh jika lembaga sertifikasi memberikan modul kelompok.",
+            correct: false,
+            explanation:
+              "Lembaga tidak melarang belajar kelompok; yang diatur umumnya adalah pelaksanaan ujian."
+          }
+        ]
+      },
+      {
+        scenario:
+          "Kelompok lain hanya menghafal kunci jawaban pilihan ganda dari latihan-latihan lama tanpa memahami alasan di balik tiap jawaban. Mereka merasa strategi ini paling efisien.",
+        question:
+          "Risiko utama pendekatan ini terhadap makna sertifikasi adalah...",
+        options: [
+          {
+            label: "A",
+            text: "Sertifikasi kehilangan fungsi sebagai indikator bahwa pemegangnya benar-benar menguasai kompetensi yang diukur.",
+            correct: true,
+            explanation:
+              "Kalau mayoritas hanya hafal kunci, sertifikasi jadi simbol kosong."
+          },
+          {
+            label: "B",
+            text: "Biaya ujian pasti akan menjadi lebih terjangkau di masa depan.",
+            correct: false,
+            explanation:
+              "Harga ujian tidak otomatis turun karena kualitas peserta turun."
+          },
+          {
+            label: "C",
+            text: "Lembaga sertifikasi terpaksa menghapus seluruh soal pilihan ganda.",
+            correct: false,
+            explanation:
+              "Format soal bisa berubah, tapi ini bukan konsekuensi otomatis."
+          }
+        ]
+      }
+    ]
   }
+];
 
-  function loadState() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const data = JSON.parse(raw);
 
-      if (data && Array.isArray(data.groups)) {
-        data.groups.forEach(saved => {
-          const g = groups.find(x => x.id === saved.id);
-          if (g) {
-            if (typeof saved.name === "string") g.name = saved.name;
-            if (typeof saved.score === "number") g.score = saved.score;
+    let currentRound = 1;
+    let isQuestionActive = false;
+    let timerId = null;
+    let timeLeft = TIME_LIMIT;
+
+    // tracking soal yang sudah pernah dipakai per topik
+    let usedQuestionsByTopic = {};
+
+    const scoreboardBody = document.getElementById("scoreboardBody");
+    const groupSelect = document.getElementById("groupSelect");
+    const topicSelect = document.getElementById("topicSelect");
+    const startRoundBtn = document.getElementById("startRoundBtn");
+    const rollDiceBtn = document.getElementById("rollDiceBtn");
+    const activeGroupLabel = document.getElementById("activeGroupLabel");
+    const topicLabel = document.getElementById("topicLabel");
+    const diceInfo = document.getElementById("diceInfo");
+    const roundBadge = document.getElementById("roundBadge");
+    const quizBox = document.getElementById("quizBox");
+    const progressInner = document.getElementById("progressInner");
+    const questionInfo = document.getElementById("questionInfo");
+    const resetScoresBtn = document.getElementById("resetScoresBtn");
+
+    // helper untuk ngacak array (Fisher-Yates)
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function saveState() {
+      try {
+        const data = {
+          groups: groups.map(g => ({ id: g.id, name: g.name, score: g.score })),
+          currentRound,
+          usedQuestionsByTopic
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn("Gagal simpan state:", e);
+      }
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (data && Array.isArray(data.groups)) {
+          data.groups.forEach(saved => {
+            const g = groups.find(x => x.id === saved.id);
+            if (g) {
+              if (typeof saved.name === "string") g.name = saved.name;
+              if (typeof saved.score === "number") g.score = saved.score;
+            }
+          });
+        }
+        if (data && typeof data.currentRound === "number") {
+          currentRound = data.currentRound;
+        }
+        if (data && typeof data.usedQuestionsByTopic === "object") {
+          usedQuestionsByTopic = data.usedQuestionsByTopic;
+        }
+      } catch (e) {
+        console.warn("Gagal load state:", e);
+      }
+    }
+
+    function renderScoreboard() {
+      const sorted = [...groups].sort((a, b) => b.score - a.score);
+      scoreboardBody.innerHTML = "";
+      sorted.forEach((g, index) => {
+        const tr = document.createElement("tr");
+
+        const rankTd = document.createElement("td");
+        rankTd.textContent = index + 1;
+
+        const nameTd = document.createElement("td");
+        const wrapper = document.createElement("div");
+        wrapper.className = "score-name";
+
+        const tag = document.createElement("span");
+        tag.className = "group-tag";
+        tag.textContent = `#${g.id}`;
+
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = g.name;
+        nameSpan.className = "name-click";
+        nameSpan.title = "Klik untuk ubah nama";
+
+        nameSpan.addEventListener("click", () => {
+          const newName = prompt("Nama baru kelompok:", g.name);
+          if (newName && newName.trim()) {
+            g.name = newName.trim();
+            syncGroupOptions();
+            renderScoreboard();
+            saveState();
           }
         });
-      }
 
-      if (data && typeof data.currentRound === "number") {
-        currentRound = data.currentRound;
-        roundInfo.textContent = `Ronde: ${currentRound}`;
-      }
-    } catch (e) {
-      console.warn("Gagal membaca dari localStorage:", e);
+        wrapper.appendChild(tag);
+        wrapper.appendChild(nameSpan);
+        nameTd.appendChild(wrapper);
+
+        const scoreTd = document.createElement("td");
+        scoreTd.className = "score-val";
+        scoreTd.textContent = g.score;
+
+        tr.appendChild(rankTd);
+        tr.appendChild(nameTd);
+        tr.appendChild(scoreTd);
+
+        scoreboardBody.appendChild(tr);
+      });
     }
-  }
 
-  function renderScoreboard() {
-    // sort by score descending
-    const sorted = [...groups].sort((a, b) => b.score - a.score);
-    scoreboardBody.innerHTML = "";
-    sorted.forEach((g, index) => {
-      const tr = document.createElement("tr");
+    function syncGroupOptions() {
+      const existing = parseInt(groupSelect.value || "1", 10);
+      groupSelect.innerHTML = "";
+      groups.forEach(g => {
+        const opt = document.createElement("option");
+        opt.value = g.id;
+        opt.textContent = `${g.id}. ${g.name}`;
+        if (g.id === existing) opt.selected = true;
+        groupSelect.appendChild(opt);
+      });
+      updateActiveGroupLabel();
+    }
 
-      const rankTd = document.createElement("td");
-      rankTd.textContent = index + 1;
+    function initTopicOptions() {
+      topicSelect.innerHTML = "";
+      topics.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t.id;
+        opt.textContent = t.name;
+        topicSelect.appendChild(opt);
+      });
+      updateTopicLabel();
+    }
 
-      const nameTd = document.createElement("td");
-      const nameDiv = document.createElement("div");
-      nameDiv.className = "score-name";
+    function getSelectedGroup() {
+      const id = parseInt(groupSelect.value, 10);
+      return groups.find(g => g.id === id);
+    }
 
-      const labelSpan = document.createElement("span");
-      labelSpan.className = "group-label";
-      labelSpan.textContent = `#${g.id}`;
+    function getTopicById(id) {
+      return topics.find(t => t.id === id);
+    }
 
-      const nameSpan = document.createElement("span");
-      nameSpan.textContent = g.name;
-      nameSpan.style.cursor = "pointer";
-      nameSpan.title = "Klik untuk mengubah nama kelompok";
+    function updateActiveGroupLabel() {
+      const g = getSelectedGroup();
+      activeGroupLabel.textContent = g ? g.name : "-";
+    }
 
-      nameSpan.addEventListener("click", () => {
-        const newName = prompt("Nama baru untuk kelompok ini:", g.name);
-        if (newName && newName.trim().length > 0) {
-          g.name = newName.trim();
-          syncGroupSelectOptions();
-          renderScoreboard();
-          saveState(); // simpan perubahan nama
-        }
+    function updateTopicLabel() {
+      const topic = getTopicById(topicSelect.value);
+      topicLabel.textContent = topic ? `Topik: ${topic.short}` : "Topik: -";
+    }
+
+    function updateRoundBadge() {
+      roundBadge.textContent = `Ronde: ${currentRound}`;
+    }
+
+    function updateTimerUI() {
+      const percent = (timeLeft / TIME_LIMIT) * 100;
+      progressInner.style.width = `${percent}%`;
+      questionInfo.textContent = `Waktu tersisa: ${timeLeft} detik`;
+    }
+
+    function stopTimer() {
+      if (timerId !== null) {
+        clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function handleTimeUp() {
+      if (!isQuestionActive) return;
+      isQuestionActive = false;
+
+      const optionEls = quizBox.querySelectorAll(".option");
+      optionEls.forEach(el => {
+        el.classList.add("disabled");
+        el.style.pointerEvents = "none";
       });
 
-      nameDiv.appendChild(labelSpan);
-      nameDiv.appendChild(nameSpan);
-      nameTd.appendChild(nameDiv);
-
-      const scoreTd = document.createElement("td");
-      scoreTd.textContent = g.score;
-
-      tr.appendChild(rankTd);
-      tr.appendChild(nameTd);
-      tr.appendChild(scoreTd);
-
-      scoreboardBody.appendChild(tr);
-    });
-  }
-
-  function syncGroupSelectOptions() {
-    const selectedId = parseInt(groupSelect.value || "1", 10);
-    groupSelect.innerHTML = "";
-    groups.forEach((g) => {
-      const opt = document.createElement("option");
-      opt.value = g.id;
-      opt.textContent = `${g.id}. ${g.name}`;
-      if (g.id === selectedId) opt.selected = true;
-      groupSelect.appendChild(opt);
-    });
-  }
-
-  function initTopicSelect() {
-    topicSelect.innerHTML = "";
-    topics.forEach((t) => {
-      const opt = document.createElement("option");
-      opt.value = t.id;
-      opt.textContent = t.name;
-      topicSelect.appendChild(opt);
-    });
-  }
-
-  function getSelectedGroup() {
-    const id = parseInt(groupSelect.value, 10);
-    return groups.find((g) => g.id === id);
-  }
-
-  function getSelectedTopic() {
-    const id = topicSelect.value;
-    return topics.find((t) => t.id === id);
-  }
-
-  function showQuest() {
-    const topic = getSelectedTopic();
-    if (!topic || !topic.quests || topic.quests.length === 0) {
-      questContainer.innerHTML =
-        '<div class="quest-empty">Belum ada quest untuk topik ini.</div>';
-      return;
+      const banner = document.createElement("div");
+      banner.className = "result-banner fail";
+      const t1 = document.createElement("div");
+      t1.className = "result-text";
+      t1.textContent = "Waktu habis. Tidak ada poin untuk ronde ini.";
+      banner.appendChild(t1);
+      quizBox.appendChild(banner);
     }
 
-    const quest =
-      topic.quests[Math.floor(Math.random() * topic.quests.length)];
-    const group = getSelectedGroup();
+    function startTimer() {
+      stopTimer();
+      timeLeft = TIME_LIMIT;
+      updateTimerUI();
+      timerId = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          timeLeft = 0;
+          updateTimerUI();
+          stopTimer();
+          handleTimeUp();
+        } else {
+          updateTimerUI();
+        }
+      }, 1000);
+    }
 
-    questContainer.innerHTML = "";
+    // pilih soal berikutnya untuk topik tertentu (tidak mengulang sampai habis)
+    function pickNextQuestion(topicId) {
+      const topic = getTopicById(topicId);
+      if (!topic || !topic.questions.length) return null;
 
-    const topicBadge = document.createElement("div");
-    topicBadge.className = "badge-topic";
-    topicBadge.textContent = topic.short;
+      const total = topic.questions.length;
+      if (!usedQuestionsByTopic[topicId]) {
+        usedQuestionsByTopic[topicId] = [];
+      }
+      const used = usedQuestionsByTopic[topicId];
 
-    const titleEl = document.createElement("div");
-    titleEl.className = "quest-title";
-    titleEl.textContent = quest.title;
+      // kalau semua index sudah pernah dipakai → reset supaya bisa muter lagi
+      if (used.length >= total) {
+        usedQuestionsByTopic[topicId] = [];
+      }
 
-    const bodyEl = document.createElement("div");
-    bodyEl.className = "quest-body";
-    bodyEl.textContent = quest.body;
+      // ambil index yang belum dipakai
+      const available = [];
+      for (let i = 0; i < total; i++) {
+        if (!used.includes(i)) available.push(i);
+      }
 
-    const ul = document.createElement("ul");
-    ul.className = "quest-questions";
-    quest.questions.forEach((q) => {
-      const li = document.createElement("li");
-      li.textContent = q;
-      ul.appendChild(li);
-    });
+      const idx = available[Math.floor(Math.random() * available.length)];
+      usedQuestionsByTopic[topicId].push(idx);
+      saveState(); // simpan histori soal
+      return topic.questions[idx];
+    }
 
-    const meta = document.createElement("div");
-    meta.className = "quest-meta";
-    meta.innerHTML =
-      `<span>Kelompok terpilih: <strong>${group.name}</strong></span>` +
-      `<span>Level: ${quest.difficulty}</span>`;
+    // render soal + opsi (opsi diacak tiap kali)
+    function renderQuestion(question, topic) {
+      quizBox.innerHTML = "";
+      const badge = document.createElement("div");
+      badge.className = "badge-topic";
+      badge.textContent = topic.short;
 
-    const watermark = document.createElement("div");
-    watermark.className = "quest-watermark";
-    watermark.textContent = "ETHICS";
+      const scenario = document.createElement("div");
+      scenario.className = "quiz-scenario";
+      scenario.textContent = question.scenario;
 
-    questContainer.appendChild(topicBadge);
-    questContainer.appendChild(titleEl);
-    questContainer.appendChild(bodyEl);
-    questContainer.appendChild(ul);
-    questContainer.appendChild(meta);
-    questContainer.appendChild(watermark);
+      const qEl = document.createElement("div");
+      qEl.className = "quiz-question";
+      qEl.textContent = question.question;
 
-    currentRound++;
-    roundInfo.textContent = `Ronde: ${currentRound}`;
-    saveState(); // simpan ronde terbaru
-  }
+      const optionsWrap = document.createElement("div");
+      optionsWrap.className = "options";
 
-  function addScore(delta) {
-    const group = getSelectedGroup();
-    if (!group) return;
-    group.score += delta;
-    if (group.score < 0) group.score = 0;
-    renderScoreboard();
-    saveState(); // simpan perubahan skor
-  }
+      // copy & shuffle opsi
+      const shuffledOptions = question.options.map(o => ({ ...o }));
+      shuffleArray(shuffledOptions);
 
-  // ====== EVENT BINDING ======
-  questBtn.addEventListener("click", showQuest);
+      shuffledOptions.forEach((opt, idx) => {
+        const optEl = document.createElement("div");
+        optEl.className = "option";
+        optEl.dataset.correct = opt.correct ? "1" : "0";
 
-  document.querySelectorAll(".score-buttons .btn-soft").forEach((btn) => {
-    const val = btn.getAttribute("data-score");
-    if (!val) return;
-    btn.addEventListener("click", () => {
-      const num = parseInt(val.replace("+", ""), 10);
-      if (!isNaN(num)) addScore(num);
-    });
-  });
+        const prefix = document.createElement("div");
+        prefix.className = "option-prefix";
+        const labelChar = String.fromCharCode(65 + idx); // A, B, C...
+        prefix.textContent = labelChar;
 
-  customScoreBtn.addEventListener("click", () => {
-    const value = parseInt(customScoreInput.value, 10);
-    if (isNaN(value)) return;
-    addScore(value);
-    customScoreInput.value = "";
-  });
+        const text = document.createElement("div");
+        text.className = "option-text";
+        text.textContent = opt.text;
 
-  resetAllBtn.addEventListener("click", () => {
-    if (
-      confirm(
-        "Yakin ingin mereset semua poin? Tindakan ini tidak bisa dibatalkan."
-      )
-    ) {
-      groups.forEach((g) => (g.score = 0));
-      currentRound = 1;
-      roundInfo.textContent = `Ronde: ${currentRound}`;
+        optEl.appendChild(prefix);
+        optEl.appendChild(text);
+
+        optEl.addEventListener("click", () => handleAnswerClick(optEl, opt));
+        optionsWrap.appendChild(optEl);
+      });
+
+      const watermark = document.createElement("div");
+      watermark.className = "watermark";
+      watermark.textContent = "ETHICS";
+
+      quizBox.appendChild(badge);
+      quizBox.appendChild(scenario);
+      quizBox.appendChild(qEl);
+      quizBox.appendChild(optionsWrap);
+      quizBox.appendChild(watermark);
+    }
+
+    function handleAnswerClick(optionEl, opt) {
+      if (!isQuestionActive) return;
+      isQuestionActive = false;
+      stopTimer();
+
+      const optionEls = quizBox.querySelectorAll(".option");
+      optionEls.forEach(el => {
+        el.classList.add("disabled");
+        el.style.pointerEvents = "none";
+      });
+
+      optionEls.forEach(el => {
+        const isCorrect = el.dataset.correct === "1";
+        if (isCorrect) el.classList.add("correct");
+      });
+
+      if (opt.correct) {
+        optionEl.classList.add("correct");
+      } else {
+        optionEl.classList.add("wrong");
+      }
+
+      const group = getSelectedGroup();
+      let resultText = "";
+      let resultExtra = opt.explanation || "";
+      let success = false;
+
+      if (opt.correct) {
+        group.score += CORRECT_REWARD;
+        resultText = `Jawaban ${group.name} BENAR (+${CORRECT_REWARD} poin).`;
+        success = true;
+      } else {
+        group.score -= WRONG_PENALTY;
+        resultText = `Jawaban ${group.name} SALAH (-${WRONG_PENALTY} poin).`;
+      }
+
       renderScoreboard();
-      saveState(); // simpan state kosong
+      saveState();
+
+      const banner = document.createElement("div");
+      banner.className = "result-banner " + (success ? "success" : "fail");
+
+      const t1 = document.createElement("div");
+      t1.className = "result-text";
+      t1.textContent = resultText;
+
+      const t2 = document.createElement("div");
+      t2.className = "result-extra";
+      t2.textContent = resultExtra;
+
+      banner.appendChild(t1);
+      banner.appendChild(t2);
+      quizBox.appendChild(banner);
     }
-  });
 
-  // INIT: load state dulu, baru render
-  loadState();
-  syncGroupSelectOptions();
-  initTopicSelect();
-  renderScoreboard();
-</script>
+    function startRound() {
+      const topicId = topicSelect.value;
+      const topic = getTopicById(topicId);
+      const group = getSelectedGroup();
+      if (!topic || !group) return;
 
+      const question = pickNextQuestion(topicId);
+      if (!question) {
+        quizBox.innerHTML =
+          '<div class="quiz-placeholder">Belum ada soal untuk topik ini.</div>';
+        return;
+      }
+
+      renderQuestion(question, topic);
+      isQuestionActive = true;
+      currentRound++;
+      updateRoundBadge();
+      updateActiveGroupLabel();
+      startTimer();
+    }
+
+    function resetScores() {
+      if (!confirm("Reset semua skor, ronde, dan histori soal?")) return;
+      groups.forEach(g => (g.score = 0));
+      currentRound = 1;
+      usedQuestionsByTopic = {};
+      updateRoundBadge();
+      renderScoreboard();
+      saveState();
+      stopTimer();
+      progressInner.style.width = "0%";
+      questionInfo.textContent = "Waktu tersisa: - detik";
+      quizBox.innerHTML =
+        '<div class="quiz-placeholder">Belum ada soal. Dosen: pilih kelompok dan topik, lalu klik <strong>MULAI RONDE</strong>.</div>';
+    }
+
+    function rollDiceForTopic() {
+      const n = topics.length;
+      if (n === 0) return;
+      const roll = Math.floor(Math.random() * n) + 1; // 1..n
+      const chosen = topics[roll - 1];
+      topicSelect.value = chosen.id;
+      updateTopicLabel();
+      diceInfo.textContent = `Dadu: ${roll} → ${roll}. ${chosen.short}`;
+    }
+
+    // Event binding
+    startRoundBtn.addEventListener("click", startRound);
+    rollDiceBtn.addEventListener("click", rollDiceForTopic);
+    groupSelect.addEventListener("change", updateActiveGroupLabel);
+    topicSelect.addEventListener("change", updateTopicLabel);
+    resetScoresBtn.addEventListener("click", resetScores);
+
+    // Init
+    loadState();
+    syncGroupOptions();
+    initTopicOptions();
+    renderScoreboard();
+    updateRoundBadge();
+    progressInner.style.width = "0%";
+    questionInfo.textContent = "Waktu tersisa: - detik";
+  </script>
 </body>
 </html>
