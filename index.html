@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Ethics Quiz Arena - Kelompok 5 Etika Profesi TI</title>
+  <title>Ethics Quiz Arena - Etika Profesi TI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -540,6 +540,7 @@
 
 /* ==========================
    BANK SOAL: 13 TOPIK × 3
+   (VERSI LEBIH SULIT & AMBIGU)
 ===========================*/
 const topics = [
   // 1. Filsafat Etika
@@ -556,24 +557,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Utilitarianisme: rilis saja karena manfaat fitur bagi mayoritas user lebih besar dari kemungkinan kerugian minoritas.",
+            text: "Pendekatan utilitarianisme bisa saja membenarkan rilis jika benar-benar terbukti bahwa kerugian minoritas jauh lebih kecil dari manfaat besar bagi mayoritas, sehingga fokus pada total kebahagiaan kolektif.",
             correct: false,
             explanation:
-              "Ini bacaan utilitarianisme yang terlalu sempit: kerugian kecil tapi menyentuh hak finansial orang lain tidak bisa diabaikan begitu saja."
+              "Ini menggambarkan utilitarianisme secara sepintas, tapi mengabaikan bahwa hak finansial individu bukan sekadar angka kecil di statistik dan secara praktis sering dianggap batas etis yang tidak boleh sengaja dilanggar."
           },
           {
             label: "B",
-            text: "Deontologi: ada kewajiban moral untuk tidak sengaja merilis sistem yang diketahui berpotensi merugikan hak milik user, meskipun probabilitasnya kecil.",
+            text: "Dari perspektif deontologi, ada kewajiban moral untuk tidak dengan sengaja melepas sistem yang sudah diketahui berpotensi merugikan hak milik user, meskipun probabilitasnya rendah dan manfaat ekonominya tinggi.",
             correct: true,
             explanation:
-              "Deontologi fokus pada kewajiban dan larangan prinsipil: sengaja merilis sistem yang kita tahu berpotensi merugikan hak orang tetap salah, berapa pun probabilitasnya."
+              "Deontologi menekankan prinsip dan kewajiban: kalau kita sadar ada kemungkinan melukai hak orang, tindakan melepas sistem secara sengaja tetap salah, terlepas dari perhitungan probabilitas dan profit."
           },
           {
             label: "C",
-            text: "Relativisme: kalau budaya perusahaan biasa menerima risiko seperti ini, maka secara moral keputusan manajer sah-sah saja.",
+            text: "Relativisme budaya bisa menilai keputusan ini dapat diterima jika norma di perusahaan dan ekosistem startup memang menganggap trade-off risiko seperti ini sebagai hal yang wajar demi inovasi cepat.",
             correct: false,
             explanation:
-              "Relativisme seperti ini justru membuka pintu pembenaran massal atas praktik yang jelas melanggar hak pengguna."
+              "Relativisme menjelaskan bagaimana orang bisa membenarkan tindakan seperti ini, tapi bukan landasan kuat untuk MENOLAK rilis; pendekatan ini cenderung menyesuaikan standar moral ke budaya yang ada, bukan mengkritiknya."
           }
         ]
       },
@@ -585,24 +586,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Algoritma etis selama tidak melanggar hukum positif yang berlaku di negara tersebut.",
+            text: "Selama algoritma tersebut tidak melanggar hukum positif dan semua proses sudah sesuai regulasi, maka dampak moralnya dapat dianggap dapat diterima dalam kerangka utilitarianisme modern.",
             correct: false,
             explanation:
-              "Utilitarianisme tidak berhenti di 'legal atau tidak', tapi menimbang total kebahagiaan dan penderitaan yang dihasilkan."
+              "Legalitas penting, tapi utilitarianisme klasik dan modern tidak berhenti pada 'asal legal'; tetap harus menimbang kesejahteraan psikologis dan sosial secara menyeluruh."
           },
           {
             label: "B",
-            text: "Algoritma harus dievaluasi ulang karena peningkatan profit tidak boleh mengorbankan penurunan signifikan kesejahteraan psikologis dan produktivitas jutaan user.",
+            text: "Algoritma perlu dievaluasi ulang karena peningkatan profit dan engagement tidak otomatis mengimbangi penurunan signifikan kesehatan mental, keseimbangan hidup, dan produktivitas jutaan user dalam jangka panjang.",
             correct: true,
             explanation:
-              "Utilitarianisme menimbang dampak menyeluruh pada kesejahteraan semua pihak, bukan hanya angka profit satu aktor ekonomi."
+              "Ini sejalan dengan utilitarianisme: yang dihitung bukan hanya angka profit, tetapi keseluruhan dampak terhadap kebahagiaan dan penderitaan semua pihak yang terlibat."
           },
           {
             label: "C",
-            text: "Selama user menyetujui terms & conditions, semua konsekuensi penggunaan menjadi tanggung jawab user sendiri.",
+            text: "Jika user sudah menyetujui terms & conditions secara sadar, konsekuensi yang timbul dapat dianggap sebagai pilihan rasional user sendiri sehingga platform relatif bebas dari tanggung jawab utilitarian.",
             correct: false,
             explanation:
-              "Persetujuan formal tidak otomatis membuat semua konsekuensi utilitarian 'netral', apalagi bila ada asimetri informasi dan desain adiktif."
+              "Persetujuan formal sering terjadi dalam kondisi asimetri informasi dan desain adiktif; utilitarianisme tidak langsung menghapus tanggung jawab platform hanya karena ada checkbox persetujuan."
           }
         ]
       },
@@ -614,24 +615,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Moral disengagement / rationalization: memindahkan tanggung jawab pribadi dengan alasan 'semua orang juga begitu'.",
+            text: "Moral disengagement / rationalization: ia mencoba mereduksi tanggung jawab pribadi dengan menggeser fokus ke 'semua orang melakukan hal serupa' sehingga pelanggaran tampak wajar.",
             correct: true,
             explanation:
-              "Ini contoh klasik rasionalisasi: ia tahu ada problem moral, tapi berusaha melepas rasa bersalah dengan membaurkannya ke 'sistem'."
+              "Ini pola klasik pelepasan tanggung jawab: masalah moral diakui secara samar, lalu dilarutkan ke 'sistem' agar rasa bersalah berkurang."
           },
           {
             label: "B",
-            text: "Konsekuensialisme murni: menilai baik–buruk hanya dari hasil akhir tanpa memerhatikan proses.",
+            text: "Konsekuensialisme murni: ia menilai tindakannya boleh saja selama tidak mengubah hasil akhir secara signifikan dibanding jika orang lain yang melakukannya.",
             correct: false,
             explanation:
-              "Ia bukan sedang menghitung konsekuensi secara serius, tapi mencari pembenaran bahwa tindakannya tidak penting."
+              "Ada sedikit nuansa konsekuensi di sana, tetapi esensinya bukan analisis serius tentang hasil akhir, melainkan upaya membenarkan diri dengan 'kalau bukan saya, ya orang lain'."
           },
           {
             label: "C",
-            text: "Virtue ethics: fokus pada pembentukan karakter taat sistem demi stabilitas organisasi.",
+            text: "Virtue ethics: ia sedang berusaha mempertahankan stabilitas organisasi dengan menunjukkan loyalitas dan kepatuhan pada budaya perusahaan yang sudah ada.",
             correct: false,
             explanation:
-              "Virtue ethics justru akan menekankan keberanian moral untuk menolak praktik yang salah meski sistem mendorong sebaliknya."
+              "Virtue ethics justru menonjolkan keberanian, integritas, dan kejujuran; pasrah pada praktik yang salah bukan cerminan karakter baik dalam kerangka ini."
           }
         ]
       }
@@ -652,24 +653,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Menyelesaikan semua permintaan tambahan tanpa protes demi menjaga hubungan baik, lalu berharap klien memahami effort-nya.",
+            text: "Menerima semua perubahan fitur yang diminta klien demi menjaga hubungan jangka panjang, sambil berharap klien menyadari sendiri bahwa beban kerja sudah jauh melampaui kesepakatan awal.",
             correct: false,
             explanation:
-              "Ini terlihat 'baik', tapi tidak profesional: tidak ada kejelasan scope, biaya, dan batasan kerja."
+              "Kelihatan 'baik', tapi profesionalisme butuh kejelasan kontrak dan batas kerja, bukan hanya pengorbanan sepihak tanpa struktur."
           },
           {
             label: "B",
-            text: "Menghentikan sementara pengembangan dan mengusulkan addendum/kontrak tertulis yang menjelaskan scope baru, biaya tambahan, dan revisi tenggat.",
+            text: "Menghentikan sementara pengembangan untuk merumuskan addendum/kontrak tertulis yang memperjelas scope baru, konsekuensi biaya, dan revisi tenggat sebelum melanjutkan pekerjaan.",
             correct: true,
             explanation:
-              "Profesionalisme = kejelasan, dokumentasi, dan kesepakatan eksplisit, bukan sekadar mengalah."
+              "Ini menunjukkan profesionalisme: mendokumentasikan perubahan scope dan mengamankan kesepakatan eksplisit yang adil bagi kedua belah pihak."
           },
           {
             label: "C",
-            text: "Meninggalkan proyek dan memutus komunikasi karena klien dianggap 'toxic' dan tidak menghargai developer.",
+            text: "Langsung menghentikan proyek dan memutus komunikasi dengan alasan klien tidak profesional, agar tidak terjebak dalam situasi yang berpotensi merugikan lebih jauh.",
             correct: false,
             explanation:
-              "Ini mungkin menggambarkan emosi wajar, tapi secara profesional malah bisa merusak reputasi dan meninggalkan tanggung jawab."
+              "Keluar dari proyek bisa jadi opsi ekstrem dalam kasus tertentu, tapi memutus komunikasi tanpa penyelesaian justru merusak reputasi profesional di mata klien lain."
           }
         ]
       },
@@ -681,24 +682,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Wajar, karena pembagian kerja di perusahaan modern memang memisah total antara developer dan security engineer.",
+            text: "Dapat dimaklumi karena spesialisasi peran di perusahaan modern membuat isu keamanan cukup diserahkan ke tim dedicated security.",
             correct: false,
             explanation:
-              "Memahami aspek dasar security tetap bagian dari tanggung jawab profesional developer, apalagi di era aplikasi online."
+              "Spesialisasi boleh, tapi developer tetap memegang tanggung jawab minimal memahami risiko keamanan dasar dari fitur yang ia kembangkan."
           },
           {
             label: "B",
-            text: "Bermasalah, karena profesional TI wajib menjaga kompetensi minimal di area yang berdampak langsung pada kualitas dan keamanan produk.",
+            text: "Bermasalah, karena bagian dari profesionalisme TI adalah menjaga kompetensi dasar di area yang berdampak langsung pada kualitas dan keamanan sistem, bahkan bila ada tim khusus.",
             correct: true,
             explanation:
-              "Continuous learning termasuk update di area yang berdampak langsung ke user, termasuk security fundamental."
+              "Security by design tidak akan jalan kalau developer menganggap keamanan sepenuhnya urusan orang lain."
           },
           {
             label: "C",
-            text: "Tidak apa-apa, selama bug security bisa ditambal ketika sudah ditemukan oleh tim lain.",
+            text: "Tidak terlalu bermasalah selama bug security nantinya bisa ditemukan lewat proses testing dan diperbaiki melalui patch setelah aplikasi rilis.",
             correct: false,
             explanation:
-              "Pendekatan reaktif seperti ini bertentangan dengan standar profesionalisme dan praktik secure-by-design."
+              "Pendekatan reaktif ini bertentangan dengan standar praktik baik yang menekankan pencegahan sejak awal."
           }
         ]
       },
@@ -710,24 +711,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Transparansi dan kejujuran dalam mengkomunikasikan kapasitas dan estimasi realistis kepada klien.",
+            text: "Kejujuran dan transparansi dalam menyampaikan estimasi waktu dan kapasitas realistis, sehingga klien tidak dibawa pada ekspektasi yang sengaja dimanipulasi.",
             correct: true,
             explanation:
-              "Memberikan janji yang sengaja tidak realistis untuk memenangkan proyek adalah pelanggaran integritas profesional."
+              "Profesionalisme menuntut estimasi yang jujur, bukan janji yang sengaja diperkecil demi memenangkan proyek."
           },
           {
             label: "B",
-            text: "Kemampuan teknis coding di sisi backend dan database.",
+            text: "Kemampuan teknis dalam hal optimasi backend dan desain database sehingga pengerjaan sebenarnya bisa dipercepat mendekati 3 bulan.",
             correct: false,
             explanation:
-              "Masalah utama bukan skill teknis, tapi kejujuran dalam menyampaikan batasan kapasitas."
+              "Masalah utama bukan di skill teknis, melainkan kesengajaan menipu ekspektasi waktu."
           },
           {
             label: "C",
-            text: "Kemampuan public speaking karena proposal disampaikan dalam bentuk presentasi.",
+            text: "Keterampilan presentasi dan public speaking yang kurang baik sehingga klien tidak paham risiko penundaan.",
             correct: false,
             explanation:
-              "Presentasi boleh bagus, tapi isinya tetap tidak jujur. Problem etis bukan di skill presentasinya."
+              "Walau komunikasi penting, inti persoalan di sini bukan retorika, tetapi niat menyajikan angka yang tidak jujur."
           }
         ]
       }
@@ -748,24 +749,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Kurang tepat, karena profesional TI juga bertanggung jawab merancang kontrol akses dan mekanisme perlindungan data sensitif.",
+            text: "Kurang tepat, karena profesional TI ikut bertanggung jawab merancang kontrol akses, enkripsi, dan mekanisme teknis lain yang melindungi kerahasiaan data pasien.",
             correct: true,
             explanation:
-              "Profesi TI tidak netral secara etis; desain teknis terkait langsung dengan perlindungan kerahasiaan pasien."
+              "Kebijakan akses memang ditetapkan organisasi, tetapi desain teknis yang aman adalah bagian dari tanggung jawab profesi TI."
           },
           {
             label: "B",
-            text: "Sudah benar, karena aspek kebijakan akses data sepenuhnya di luar lingkup profesi TI.",
+            text: "Sudah tepat, karena urusan siapa yang boleh mengakses data pasien sepenuhnya merupakan domain kebijakan rumah sakit, bukan urusan teknis pengembang.",
             correct: false,
             explanation:
-              "Memisahkan total desain teknis dari tanggung jawab etis terhadap data sensitif adalah cara pandang yang keliru."
+              "Pemilahan ini terlalu tajam; aspek teknis dan kebijakan saling terkait dalam perlindungan data sensitif."
           },
           {
             label: "C",
-            text: "Benar sepanjang tim TI tidak memiliki akses langsung ke database produksi.",
+            text: "Bisa diterima selama tim TI memastikan dirinya sendiri tidak diberi akses langsung ke database produksi berisi rekam medis.",
             correct: false,
             explanation:
-              "Akses teknis boleh dibatasi, tapi tanggung jawab profesional dalam merancang perlindungan tetap ada."
+              "Membatasi akses tim TI penting, tapi bukan alasan untuk mengabaikan desain kontrol akses yang tepat bagi seluruh sistem."
           }
         ]
       },
@@ -777,24 +778,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Ia hanya pekerja teknis, jadi secara etis bebas memanfaatkan peluang tersebut selama tidak ada aturan internal eksplisit yang melarang.",
+            text: "Sebagai pekerja teknis, ia dapat memanfaatkan celah tersebut selama kebijakan tertulis perusahaan belum secara eksplisit melarang praktik seperti itu.",
             correct: false,
             explanation:
-              "Sebagai profesi, standar etis TI melampaui sekadar ketiadaan aturan eksplisit."
+              "Profesi TI membawa tanggung jawab moral yang jauh melampaui sekadar ketiadaan aturan tertulis."
           },
           {
             label: "B",
-            text: "Ia memegang posisi kepercayaan (trusted position) karena mengendalikan sistem yang menyangkut hak finansial orang lain.",
+            text: "Ia memegang posisi kepercayaan (trusted position), karena memiliki kemampuan dan akses yang dapat secara langsung memengaruhi hak finansial orang lain melalui sistem.",
             correct: true,
             explanation:
-              "Profesi TI di sektor finansial sangat terkait dengan amanah besar terhadap dana dan data publik."
+              "Inilah inti profesi TI di sektor keuangan: mengelola sistem yang menyangkut uang publik menuntut standar integritas yang sangat tinggi."
           },
           {
             label: "C",
-            text: "Ia boleh mencoba eksploitasi kecil dulu untuk menguji apakah sistem auditor internal bekerja dengan baik.",
+            text: "Ia boleh melakukan eksploitasi terbatas sebagai 'stress test' terhadap sistem auditor internal, selama niatnya bukan mencuri tetapi menguji kelemahan.",
             correct: false,
             explanation:
-              "Menguji sistem dengan merugikan perusahaan/pelanggan tanpa izin bukan 'test', tapi penyalahgunaan."
+              "Menguji sistem tanpa mandat resmi dan dengan risiko merugikan pihak lain tetap termasuk penyalahgunaan, bukan pengujian etis."
           }
         ]
       },
@@ -806,24 +807,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Hanya risiko teknis bila backdoor tersebut ternyata menimbulkan bug performa dan mudah dilacak.",
+            text: "Terbatas pada risiko teknis bila backdoor tersebut menurunkan performa sistem dan secara kebetulan terdeteksi dalam uji penetrasi.",
             correct: false,
             explanation:
-              "Dampaknya jauh melampaui sekadar bug: menyentuh keamanan publik dan kepercayaan terhadap institusi."
+              "Dampaknya jauh lebih luas dari sekadar performa: menyentuh keamanan publik dan kepercayaan terhadap sistem negara."
           },
           {
             label: "B",
-            text: "Merusak kepercayaan publik terhadap sistem digital dan menunjukkan bahwa profesional TI bisa disuap untuk melemahkan keamanan nasional.",
+            text: "Merusak kepercayaan publik terhadap sistem digital dan menunjukkan bahwa profesional TI dapat disuap untuk melemahkan keamanan nasional dan institusi publik.",
             correct: true,
             explanation:
-              "Ini bentuk pengkhianatan terhadap amanah profesi dan bisa berdampak sistemik pada kepercayaan publik."
+              "Ini bentuk pelanggaran berat amanah profesi dan bisa berdampak sistemik terhadap citra seluruh ekosistem TI."
           },
           {
             label: "C",
-            text: "Tidak terlalu berpengaruh terhadap profesi, karena kasus seperti ini sulit dibuktikan secara hukum.",
+            text: "Tidak terlalu berpengaruh terhadap profesi TI secara umum jika kasusnya tidak pernah terbongkar dan tidak menjadi pemberitaan publik.",
             correct: false,
             explanation:
-              "Standar profesi tidak menunggu pembuktian hukum; tindakan itu sendiri sudah pelanggaran berat."
+              "Etika profesi tidak bergantung pada apakah pelanggaran diketahui publik atau tidak; pelanggarannya tetap ada."
           }
         ]
       }
@@ -844,24 +845,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Mengikuti perintah segera, karena direktur adalah atasan tertinggi dan dianggap otomatis mewakili kepentingan perusahaan.",
+            text: "Mengikuti perintah atasan tertinggi demi loyalitas organisasi, sambil menganggap bahwa tanggung jawab moral utama berada di tangan direktur.",
             correct: false,
             explanation:
-              "Hierarki organisasi tidak menghapus kewajiban menjaga privasi dan prosedur formal."
+              "Kode etik tidak membebaskan profesional TI dari tanggung jawab pribadinya hanya karena perintah datang dari atasan."
           },
           {
             label: "B",
-            text: "Menolak secara profesional dan meminta prosedur resmi tertulis (misalnya surat tugas/hukum internal) sebelum memberikan akses.",
+            text: "Menolak atau menunda secara profesional, sambil meminta prosedur resmi yang jelas (misalnya surat tugas, keterlibatan HR/hukum) sebelum memberikan akses ke isi email.",
             correct: true,
             explanation:
-              "Ini menjaga keseimbangan antara kepatuhan terhadap organisasi dan perlindungan hak privasi karyawan."
+              "Ini menjaga keseimbangan antara kepatuhan organisasi dan perlindungan hak privasi, sekaligus menuntut proses yang akuntabel."
           },
           {
             label: "C",
-            text: "Memberikan akses beberapa email saja agar 'kompromi' dan tidak terlalu melanggar privasi.",
+            text: "Memberi akses hanya sebagian email untuk mencari titik kompromi agar kebutuhan direktur terpenuhi tanpa terlalu jauh melanggar privasi karyawan.",
             correct: false,
             explanation:
-              "Kompromi setengah-setengah tetap tidak menghapus pelanggaran prosedur dan privasi."
+              "Kompromi semacam ini tetap melanggar prosedur dan hak privasi karena tidak ada dasar formal yang sah."
           }
         ]
       },
@@ -873,24 +874,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Diam demi menjaga kekompakan tim, karena mengungkap masalah dapat mengganggu suasana kerja.",
+            text: "Memilih diam demi menjaga keharmonisan tim dan menghindari konflik interpersonal yang dapat mengganggu produktivitas.",
             correct: false,
             explanation:
-              "Kekompakan yang dibangun di atas pelanggaran etika dan lisensi justru merusak profesionalisme."
+              "Kenyamanan tim tidak boleh mengorbankan kepatuhan terhadap lisensi dan integritas profesional."
           },
           {
             label: "B",
-            text: "Melaporkan secara berjenjang (misalnya ke lead/atasan langsung) karena ada potensi pelanggaran lisensi dan reputasi profesi.",
+            text: "Melaporkan praktik tersebut secara berjenjang, misalnya kepada lead atau atasan langsung, karena ada indikasi kuat pelanggaran lisensi yang berpotensi merugikan organisasi dan reputasi profesi.",
             correct: true,
             explanation:
-              "Kode etik biasanya menuntut pelaporan pelanggaran signifikan yang berpotensi merugikan organisasi dan publik."
+              "Kode etik biasanya mewajibkan pelaporan pelanggaran signifikan yang diketahui profesional."
           },
           {
             label: "C",
-            text: "Mengikuti cara yang sama agar beban kerja pribadi berkurang dan produktivitas tim terlihat tinggi.",
+            text: "Mengikuti praktik yang sama agar beban kerja merata dan kinerja tim terlihat lebih tinggi di mata manajemen.",
             correct: false,
             explanation:
-              "Ikut melanggar demi kenyamanan jangka pendek memperparah masalah dan melanggar integritas profesi."
+              "Ikut melanggar demi solidaritas justru memperlebar dampak negatif dan menormalisasi perilaku tidak etis."
           }
         ]
       },
@@ -902,24 +903,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Kewajiban menjaga kerahasiaan data internal klien.",
+            text: "Kewajiban menjaga kerahasiaan informasi internal dan data bisnis klien dari pihak luar.",
             correct: false,
             explanation:
-              "Isu utamanya bukan kerahasiaan, melainkan motif tersembunyi dalam rekomendasi profesional."
+              "Isu di sini bukan kebocoran data, tetapi motif tersembunyi di balik rekomendasi."
           },
           {
             label: "B",
-            text: "Kewajiban menghindari dan mengungkap konflik kepentingan kepada klien.",
+            text: "Kewajiban menghindari atau setidaknya mengungkap konflik kepentingan pribadi yang dapat memengaruhi objektivitas rekomendasi profesional.",
             correct: true,
             explanation:
-              "Profesional wajib transparan ketika ada kepentingan pribadi yang bisa memengaruhi rekomendasi."
+              "Konflik kepentingan yang tidak diungkap membuat klien sulit mempercayai bahwa rekomendasi murni demi kepentingan mereka."
           },
           {
             label: "C",
-            text: "Kewajiban menjaga independensi politik di tempat kerja.",
+            text: "Kewajiban untuk bersikap netral terhadap perbedaan pandangan politik yang ada di lingkungan kerja.",
             correct: false,
             explanation:
-              "Ini tidak berkaitan dengan preferensi politik."
+              "Konteksnya tidak berkaitan dengan politik, tetapi dengan integritas profesional dan konflik kepentingan ekonomi."
           }
         ]
       }
@@ -940,24 +941,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Boleh saja, karena ini bentuk pembalasan yang proporsional terhadap pelaku pertama.",
+            text: "Bentuk pembalasan ini bisa dipahami secara emosional, dan dalam beberapa konteks dianggap sebagai 'keadilan setimpal' ketika mekanisme hukum formal tidak bekerja.",
             correct: false,
             explanation:
-              "Membalas pelanggaran hukum dengan pelanggaran baru tetap menjadikanmu pelaku kejahatan."
+              "Secara emosi mungkin terasa memuaskan, tetapi secara hukum dan etika tetap menempatkanmu sebagai pelaku akses ilegal baru."
           },
           {
             label: "B",
-            text: "Termasuk cybercrime, karena melakukan akses ilegal ke sistem orang lain meskipun korbannya adalah pelaku awal.",
+            text: "Tetap termasuk cybercrime, karena melakukan akses ilegal ke sistem orang lain dilarang, meskipun targetnya adalah pihak yang terlebih dahulu melakukan serangan.",
             correct: true,
             explanation:
-              "Hukum dan etika tidak melegalkan vigilantisme digital seperti ini."
+              "Hukum (dan etika) tidak melegalkan praktik vigilantisme digital; dua pelanggaran tidak membuat masalah selesai."
           },
           {
             label: "C",
-            text: "Netral, karena konflik hanya terjadi antara dua individu dan tidak menyentuh pihak ketiga.",
+            text: "Relatif netral secara etis karena konflik hanya berlangsung antara dua individu dan tidak berdampak pada pihak ketiga secara langsung.",
             correct: false,
             explanation:
-              "Dampaknya bisa meluas dan status hukumnya tidak berubah hanya karena korbannya pelaku pertama."
+              "Dampak akses ilegal bisa melebar, dan status hukum suatu tindakan tidak bergantung pada berapa banyak pihak yang dirugikan."
           }
         ]
       },
@@ -969,24 +970,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Phishing",
+            text: "Phishing, karena situs tiruan tersebut dirancang untuk mengelabui user agar memasukkan kredensial atau data sensitif seolah-olah di laman resmi.",
             correct: true,
             explanation:
-              "Desain tiruan untuk mencuri username/password adalah ciri klasik phishing."
+              "Ciri khas phishing adalah penipuan identitas layanan untuk mendapatkan data rahasia."
           },
           {
             label: "B",
-            text: "Defacement",
+            text: "Defacement, karena tampilan situs kampus seolah-olah diubah walaupun dilakukan melalui domain yang berbeda.",
             correct: false,
             explanation:
-              "Ia tidak mengubah situs asli, tapi membuat situs palsu yang mirip."
+              "Defacement berarti merusak tampilan situs asli; di sini pelaku justru membuat duplikat situs baru."
           },
           {
             label: "C",
-            text: "Spamming",
+            text: "Spamming, karena link disebarkan ke banyak orang di grup dan berpotensi mengganggu kenyamanan komunikasi.",
             correct: false,
             explanation:
-              "Pendistribusian massal hanyalah sarana; inti kejahatannya ada pada penipuan laman login."
+              "Penyebaran massal hanya media, bukan inti modus; inti kejahatannya ada pada penipuan login dan pencurian data."
           }
         ]
       },
@@ -998,24 +999,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Data destruction yang dilakukan orang dalam (insider threat).",
+            text: "Data sabotage atau destruction yang dilakukan oleh orang dalam (insider threat) yang menyalahgunakan aksesnya.",
             correct: true,
             explanation:
-              "Ia dengan sengaja merusak asset digital organisasi sebagai bentuk sabotase."
+              "Motif balas dendam dan posisi sebagai orang dalam membuat kasus ini klasik sebagai insider sabotage."
           },
           {
             label: "B",
-            text: "Carding karena menyangkut data pelanggan yang berhubungan dengan transaksi.",
+            text: "Carding, karena data pelanggan yang dihapus berhubungan dengan transaksi keuangan dan aktivitas belanja.",
             correct: false,
             explanation:
-              "Carding spesifik pada penyalahgunaan kartu kredit, bukan sekadar penghapusan data."
+              "Carding biasanya terkait penyalahgunaan data kartu kredit, bukan sekadar penghapusan data pelanggan."
           },
           {
             label: "C",
-            text: "Hacking karena ia punya previllege akses resmi ke server.",
+            text: "Hacking biasa, karena setiap aktivitas di server yang tidak disukai perusahaan dapat disebut hacking.",
             correct: false,
             explanation:
-              "Akses resmi tidak membenarkan tindakan merusak yang disengaja."
+              "Istilah 'hacking' terlalu umum; karakteristik penting di sini adalah unsur sabotase dan status pelaku sebagai orang dalam."
           }
         ]
       }
@@ -1036,24 +1037,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Lintas batas dan sulit dilacak karena melibatkan banyak perangkat 'zombie' dari berbagai yurisdiksi.",
+            text: "Sifat lintas batas dan sulit dilacak, karena serangan memanfaatkan ribuan perangkat 'zombie' di berbagai yurisdiksi yang tidak sadar dipakai untuk menyerang.",
             correct: true,
             explanation:
-              "Serangan terdistribusi lintas negara dan memakai perangkat pihak ketiga yang tidak sadar."
+              "Ini menonjolkan dua ciri penting: distribusi global dan penggunaan perangkat pihak ketiga tanpa sepengetahuan pemilik."
           },
           {
             label: "B",
-            text: "Terbatas lokal karena targetnya hanya perusahaan Indonesia.",
+            text: "Keterbatasan lokal, karena target serangan adalah perusahaan yang beroperasi di Indonesia sehingga dampaknya hanya dirasakan secara domestik.",
             correct: false,
             explanation:
-              "Target boleh lokal, tapi pola serangan dan sumbernya lintas batas."
+              "Target boleh lokal, tapi pola serangan dan infrastruktur botnet-nya jelas lintas negara."
           },
           {
             label: "C",
-            text: "Hanya menimbulkan kerusakan fisik pada server, bukan gangguan layanan.",
+            text: "Fokus utama pada kerusakan fisik hardware server, bukan pada gangguan layanan yang dialami user.",
             correct: false,
             explanation:
-              "Justru dampak utama DDoS adalah gangguan layanan digital."
+              "DDoS lebih banyak menyerang ketersediaan layanan, bukan merusak fisik perangkat."
           }
         ]
       },
@@ -1065,24 +1066,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Kebutuhan pelaku untuk selalu hadir secara fisik dekat dengan korban.",
+            text: "Kebutuhan pelaku untuk berada dekat secara fisik dengan korban, agar penyerangan dapat dikendalikan secara langsung dan presisi.",
             correct: false,
             explanation:
-              "Cybercrime justru memanfaatkan jarak dan ketersembunyian."
+              "Justru salah satu ciri cybercrime adalah kemampuan menyerang tanpa kedekatan fisik sama sekali."
           },
           {
             label: "B",
-            text: "Pemanfaatan komputer pihak ketiga yang tidak tahu-menahu sebagai alat serangan, sekaligus sifat lintas negara yang mempersulit penegakan hukum.",
+            text: "Pemanfaatan perangkat pihak ketiga yang tidak tahu-menahu sebagai alat serang, ditambah sifat lintas negara yang mempersulit koordinasi penegakan hukum.",
             correct: true,
             explanation:
-              "Inilah kombinasi khas: botnet + multi-yurisdiksi."
+              "Ini menggambarkan kombinasi klasik antara botnet dan multi-jurisdiksi."
           },
           {
             label: "C",
-            text: "Ketiadaan bukti digital sehingga sulit ditelusuri jejaknya.",
+            text: "Ketiadaan total jejak digital, sehingga perangkat forensik modern nyaris tidak dapat menemukan indikasi apa pun.",
             correct: false,
             explanation:
-              "Bukti digital ada, hanya saja disamarkan lewat banyak lapisan."
+              "Jejak digital biasanya tetap ada, hanya saja jalurnya kompleks dan disamarkan melalui banyak lapisan."
           }
         ]
       },
@@ -1094,24 +1095,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Obfuscation dan anonimitas tinggi yang secara sengaja dirancang untuk menyulitkan atribusi pelaku.",
+            text: "Obfuscation dan tingkat anonimitas yang tinggi, di mana pelaku sengaja menumpuk banyak lapisan perantara untuk menyulitkan atribusi identitas asli.",
             correct: true,
             explanation:
-              "Pelaku sengaja menciptakan 'noise' dan lapisan-lapisan perantara untuk mengaburkan identitas sebenarnya."
+              "Ini strategi umum: memperpanjang rantai koneksi agar sulit melacak titik asal sebenarnya."
           },
           {
             label: "B",
-            text: "Jumlah bukti digital yang sangat sedikit sehingga nyaris mustahil melakukan analisis forensik.",
+            text: "Minimnya bukti digital, sehingga satu-satunya cara mengungkap pelaku adalah mengandalkan kesaksian saksi mata di lokasi fisik.",
             correct: false,
             explanation:
-              "Bukti tetap ada, tapi jalurnya berliku. Tantangannya di kompleksitas, bukan ketiadaan."
+              "Justru sebaliknya, banyak bukti digital, hanya saja tersebar dan perlu analisis lanjutan."
           },
           {
             label: "C",
-            text: "Ketergantungan penuh pada saksi mata manusia untuk mengungkap pelaku.",
+            text: "Ketergantungan penuh pada teknik social engineering, bukan pada infrastruktur jaringan yang kompleks.",
             correct: false,
             explanation:
-              "Forensik cyber mengandalkan artefak digital, bukan saksi mata fisik."
+              "Social engineering bisa terlibat, tapi skenario ini menonjolkan lapisan teknis anonimitas jaringan."
           }
         ]
       }
@@ -1132,24 +1133,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Kurangnya kemampuan teknis mengatur pengaturan privasi di WhatsApp.",
+            text: "Kurangnya pengaturan privasi di aplikasi pesan instan sehingga konten internal grup berpotensi tersebar lebih luas dari yang diinginkan.",
             correct: false,
             explanation:
-              "Masalah bukan di skill teknis, tapi pada sikap terhadap martabat orang lain."
+              "Masalah teknis privasi bisa relevan, tapi inti masalah etisnya bukan di fitur aplikasi, melainkan isi dan sikap terhadap orang lain."
           },
           {
             label: "B",
-            text: "Tidak menghormati martabat, reputasi, dan batasan kenyamanan orang lain meski di ruang digital yang dianggap 'privat'.",
+            text: "Ketidakmampuan menghargai martabat, reputasi, dan batas kenyamanan orang lain, meskipun konten dibagikan di ruang digital yang dianggap 'tertutup'.",
             correct: true,
             explanation:
-              "Privat atau publik, etika tetap menuntut penghormatan terhadap orang lain."
+              "Etika digital tetap berlaku di ruang privat; melecehkan orang di grup tertutup tetap melukai martabatnya."
           },
           {
             label: "C",
-            text: "Penggunaan meme sebagai bentuk komunikasi di perkuliahan.",
+            text: "Penggunaan meme sebagai medium komunikasi dalam konteks perkuliahan yang idealnya lebih formal.",
             correct: false,
             explanation:
-              "Meme sebagai medium netral; isinya yang bermasalah."
+              "Meme sendiri netral; yang jadi masalah adalah isi dan cara menyerangnya, bukan media yang dipakai."
           }
         ]
       },
@@ -1161,24 +1162,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Pelanggaran serius terhadap privasi dan kepercayaan dalam komunikasi interpersonal.",
+            text: "Pelanggaran serius terhadap privasi dan kepercayaan dalam komunikasi interpersonal, karena percakapan yang bersifat konfiden dibawa ke ruang semi-publik tanpa izin.",
             correct: true,
             explanation:
-              "Chat pribadi punya ekspektasi kerahasiaan; menyebarkannya tanpa izin merusak trust."
+              "Ini merusak rasa aman orang untuk berbicara jujur di ruang privat digital."
           },
           {
             label: "B",
-            text: "Hanya masalah estetika tampilan karena screenshot tidak diedit dengan rapi.",
+            text: "Kurangnya estetika visual karena tampilan screenshot tidak dirapikan sebelum dipublikasikan ke media sosial.",
             correct: false,
             explanation:
-              "Estetika sama sekali tidak relevan di sini."
+              "Aspek estetika tidak ada hubungannya dengan inti pelanggaran etika di skenario ini."
           },
           {
             label: "C",
-            text: "Tidak masalah asalkan pengikut di Instagram relatif sedikit.",
+            text: "Tidak terlalu bermasalah bila follower yang melihat Story relatif sedikit dan semuanya teman dekat.",
             correct: false,
             explanation:
-              "Jumlah audiens tidak menghapus pelanggaran privasi."
+              "Jumlah audiens tidak menghapus pelanggaran privasi; konten juga bisa dengan mudah di-screenshot ulang."
           }
         ]
       },
@@ -1190,24 +1191,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Secara otomatis salah karena segala bentuk anonimitas di internet tidak etis.",
+            text: "Otomatis salah, karena penggunaan anonimitas di internet selalu menunjukkan ketidakbertanggungjawaban moral terhadap pendapat yang disampaikan.",
             correct: false,
             explanation:
-              "Anonimitas tidak identik dengan ketidak-etisan; tergantung cara digunakannya."
+              "Anonimitas bisa dipakai secara tidak etis, tapi tidak selalu salah; konteks dan cara penggunaannya penting."
           },
           {
             label: "B",
-            text: "Dapat diterima sejauh kritiknya berbasis fakta, tidak menghina personal, dan tidak menyebarkan hoaks.",
+            text: "Dapat diterima, selama kritik yang disampaikan berbasis fakta, disertai argumen yang wajar, tidak menyerang personal, dan tidak menyebarkan hoaks.",
             correct: true,
             explanation:
-              "Ini contoh penggunaan anonim untuk melindungi diri sambil tetap menjaga standar etis isi kritik."
+              "Di sini anonimitas digunakan sebagai perlindungan diri, sedangkan konten kritiknya tetap diupayakan etis."
           },
           {
             label: "C",
-            text: "Selalu benar tanpa syarat karena dilindungi konsep 'kebebasan berekspresi'.",
+            text: "Selalu benar tanpa syarat, karena semua bentuk ekspresi di dunia maya dilindungi penuh oleh prinsip kebebasan berekspresi.",
             correct: false,
             explanation:
-              "Kebebasan berekspresi tetap terikat tanggung jawab etis, misalnya tidak boleh memfitnah."
+              "Kebebasan berekspresi tetap punya batas etis dan hukum, misalnya terkait fitnah, ujaran kebencian, dan hoaks."
           }
         ]
       }
@@ -1228,24 +1229,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Potensi masuk ke ranah pencemaran nama baik dan/atau penghinaan melalui media elektronik.",
+            text: "Potensi masuk ke ranah pencemaran nama baik dan/atau penghinaan melalui media elektronik, karena komentar sudah menyerang kehormatan pribadi dengan tuduhan yang tidak jelas buktinya.",
             correct: true,
             explanation:
-              "Kritik produk boleh, tapi menyerang kehormatan pribadi dengan tuduhan tak berdasar bisa terkena pasal tertentu di UU ITE."
+              "Kritik produk sah, tapi membawa ke ranah penghinaan pribadi dan tuduhan tanpa bukti bisa kena pasal tertentu."
           },
           {
             label: "B",
-            text: "Hanya masalah etika konsumen, karena hukum tidak mengatur review online.",
+            text: "Hanya berkaitan dengan etika konsumen, karena hukum di ranah siber tidak secara khusus mengatur review dan komentar yang bernada emosional.",
             correct: false,
             explanation:
-              "UU ITE secara eksplisit menyentuh konten di ruang elektronik, termasuk media sosial/ulasan."
+              "UU ITE justru mencakup konten yang disebarkan melalui media elektronik, termasuk komentar dan ulasan."
           },
           {
             label: "C",
-            text: "Tidak ada risiko hukum bila review hanya ditulis sekali, bukan berulang-ulang.",
+            text: "Tidak ada risiko hukum selama review ditulis satu kali saja dan tidak diulang-ulang di platform lain.",
             correct: false,
             explanation:
-              "Frekuensi tidak menghapus unsur pencemaran/fitnah jika syarat lainnya terpenuhi."
+              "Frekuensi bukan penentu utama; sekali unggah pun dapat berdampak hukum jika unsur-unsurnya terpenuhi."
           }
         ]
       },
@@ -1257,24 +1258,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Ancaman kekerasan fisik di media sosial bisa masuk ke ranah pidana meskipun belum ada tindakan nyata.",
+            text: "Ancaman kekerasan fisik yang disebarkan melalui media sosial berpotensi masuk ke ranah pidana, meskipun belum ada tindakan nyata yang dilakukan.",
             correct: true,
             explanation:
-              "Ucapan ancaman serius tidak dianggap 'candaan' hanya karena di dunia maya."
+              "Ucapan ancaman yang serius di ruang digital dapat dipandang sebagai perbuatan melawan hukum, bukan sekadar 'canda online'."
           },
           {
             label: "B",
-            text: "Karena hanya komentar teks, maka tidak dapat diproses secara hukum.",
+            text: "Karena hanya berupa teks di internet, maka secara hukum sulit dianggap sebagai perbuatan yang dapat diproses.",
             correct: false,
             explanation:
-              "Konten elektronik (teks, gambar, dll.) justru menjadi objek utama UU ITE."
+              "Justru teks dan gambar di media sosial adalah bentuk 'informasi elektronik' yang diatur dalam UU ITE."
           },
           {
             label: "C",
-            text: "Admin grup sama sekali tidak punya kewajiban moral maupun legal untuk moderasi konten.",
+            text: "Admin grup sama sekali tidak memiliki tanggung jawab moral maupun legal terhadap konten yang dibiarkan tampil di ruang yang ia kelola.",
             correct: false,
             explanation:
-              "Dalam beberapa kasus, pengelola platform dapat dimintai pertanggungjawaban terkait kebijakan moderasi."
+              "Dalam beberapa konteks, pengelola platform dapat dimintai pertanggungjawaban terkait kebijakan moderasi atau kelalaiannya."
           }
         ]
       },
@@ -1286,24 +1287,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Pencemaran nama baik dan penghinaan melalui informasi elektronik.",
+            text: "Pencemaran nama baik dan penghinaan melalui informasi elektronik, karena manipulasi foto digunakan untuk merusak reputasi di ruang publik.",
             correct: true,
             explanation:
-              "Manipulasi image yang merusak reputasi jelas berkaitan dengan pasal-pasal penghinaan/pencemaran."
+              "Ini contoh jelas bagaimana konten digital dipakai untuk menyerang kehormatan seseorang."
           },
           {
             label: "B",
-            text: "Semata-mata pelanggaran hak cipta atas foto asli.",
+            text: "Semata-mata pelanggaran hak cipta terhadap pemilik foto asli, tanpa relevansi dengan isu reputasi atau kehormatan.",
             correct: false,
             explanation:
-              "Hak cipta mungkin relevan, tapi konteks utama soal pencemaran nama baik."
+              "Hak cipta mungkin relevan, tetapi inti kasus ini adalah perusakan reputasi pribadi."
           },
           {
             label: "C",
-            text: "Hanya masalah selera humor dan kreativitas editing.",
+            text: "Hanya soal kreativitas editing visual dan kebebasan berekspresi dalam berkarya di media sosial.",
             correct: false,
             explanation:
-              "Kreativitas tidak membenarkan perusakan reputasi orang lain."
+              "Kebebasan berekspresi tidak membenarkan perusakan nama baik orang lain."
           }
         ]
       }
@@ -1324,24 +1325,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Menghentikan kebiasaan forward otomatis dan memeriksa kebenaran informasi sebelum menyebarkannya.",
+            text: "Menghentikan kebiasaan forward otomatis dan memeriksa kebenaran informasi sebelum menyebarkannya, terutama jika mengandung permintaan data pribadi dan uang.",
             correct: true,
             explanation:
-              "Penyebaran informasi bohong/menyesatkan bisa punya konsekuensi hukum dan etis."
+              "Penyebaran informasi menyesatkan dan berpotensi penipuan bisa berdampak etis dan hukum, meski awalnya hanya meneruskan pesan."
           },
           {
             label: "B",
-            text: "Tetap menyebarkan selama ia mencantumkan kalimat 'share dari grup sebelah'.",
+            text: "Tetap meneruskan pesan selama ia mencantumkan keterangan bahwa informasi tersebut 'share dari grup sebelah' sehingga tanggung jawab berpindah ke sumber awal.",
             correct: false,
             explanation:
-              "Mencantumkan sumber tidak menghapus tanggung jawab atas penyebaran hoaks."
+              "Mencantumkan sumber tidak menghapus kontribusi terhadap penyebaran hoaks atau penipuan."
           },
           {
             label: "C",
-            text: "Menghapus chat sendiri setelah tahu hoaks tanpa perlu mengklarifikasi ke orang lain.",
+            text: "Cukup menghapus pesan di ponsel sendiri setelah tahu bahwa informasi tersebut hoaks, tanpa perlu memberi klarifikasi kepada orang yang sudah terlanjur menerima.",
             correct: false,
             explanation:
-              "Kalau sudah terlanjur menyebarkan, seharusnya ada usaha koreksi/minimal peringatan."
+              "Kalau sudah terlanjur menyebarkan, secara etis minimal perlu koreksi atau peringatan ke pihak yang sudah menerima."
           }
         ]
       },
@@ -1353,24 +1354,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Sekadar kreativitas editing gambar tanpa konsekuensi hukum.",
+            text: "Sekadar kreativitas dalam mengedit gambar digital yang tidak berkaitan dengan aspek legal apa pun.",
             correct: false,
             explanation:
-              "Editing yang mengubah makna dan mencemarkan nama baik jelas bermasalah."
+              "Begitu hasil editan dipresentasikan sebagai fakta dan merugikan reputasi orang, statusnya jauh dari sekadar kreativitas."
           },
           {
             label: "B",
-            text: "Penyebaran informasi bohong/disinformasi yang merugikan reputasi seseorang melalui media elektronik.",
+            text: "Penyebaran informasi bohong/disinformasi melalui media elektronik yang merugikan nama baik dan reputasi seseorang.",
             correct: true,
             explanation:
-              "Ini kombinasi hoaks + pencemaran nama baik via kanal elektronik."
+              "Ini bisa menggabungkan unsur hoaks dan pencemaran nama baik sekaligus."
           },
           {
             label: "C",
-            text: "Tidak berbahaya jika hanya dilihat oleh sedikit orang.",
+            text: "Tidak berbahaya jika hanya dilihat oleh sedikit orang dan cepat dihapus kembali oleh pengunggah.",
             correct: false,
             explanation:
-              "Dampak bisa besar meskipun audiens awal kecil karena konten bisa menyebar lebih jauh."
+              "Konten bisa di-screen-shot ulang dan menyebar; dampak hukum tidak otomatis hilang hanya karena awalnya audiens kecil."
           }
         ]
       },
@@ -1382,24 +1383,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Diperbolehkan selama digunakan proporsional untuk keamanan dan dikelola dengan perlindungan data yang memadai.",
+            text: "Dapat dibenarkan selama pencatatan log digunakan secara proporsional untuk keamanan, diatur kebijakannya, dan dilindungi dari penyalahgunaan atau kebocoran.",
             correct: true,
             explanation:
-              "Logging adalah praktik standar keamanan; yang penting cara penyimpanan dan penggunaannya."
+              "Logging adalah praktik standar; yang penting adalah tata kelola dan perlindungan datanya."
           },
           {
             label: "B",
-            text: "Selalu dilarang karena menyimpan data pengguna sama dengan melanggar privasi.",
+            text: "Selalu dilarang karena setiap bentuk penyimpanan data teknis user otomatis dianggap pelanggaran privasi menurut UU ITE.",
             correct: false,
             explanation:
-              "Larangan bukan pada pencatatan log itu sendiri, melainkan pada penyalahgunaan atau kebocorannya."
+              "UU ITE tidak melarang semua bentuk pencatatan data; yang bermasalah adalah penyalahgunaan atau pelanggaran ketentuan."
           },
           {
             label: "C",
-            text: "Tidak ada kaitannya sama sekali dengan ranah UU ITE.",
+            text: "Tidak ada kaitannya sama sekali dengan ranah UU ITE, karena log hanya dipakai untuk keperluan internal.",
             correct: false,
             explanation:
-              "Log adalah informasi elektronik yang justru sering jadi alat bukti di kasus-kasus UU ITE."
+              "Log adalah informasi elektronik yang justru sering dipakai sebagai alat bukti di kasus ITE."
           }
         ]
       }
@@ -1420,24 +1421,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Tidak menyebut nama pembuat font dan template di halaman kredit.",
+            text: "Tidak mencantumkan nama pembuat font dan template di halaman kredit kampanye sehingga kreator asli tidak mendapatkan exposure.",
             correct: false,
             explanation:
-              "Kredit penting, tapi di sini masalah utamanya lebih fundamental."
+              "Memberi kredit penting, tapi di sini masalah utamanya lebih fundamental: penggunaan tanpa lisensi."
           },
           {
             label: "B",
-            text: "Menggunakan karya berlisensi berbayar tanpa lisensi sah, baik untuk pemakaian internal maupun komersial.",
+            text: "Menggunakan karya berlisensi berbayar tanpa lisensi sah, baik untuk kebutuhan internal maupun proyek komersial klien.",
             correct: true,
             explanation:
-              "Ini pelanggaran hak cipta: memanfaatkan karya tanpa izin dan tanpa membayar lisensi."
+              "Ini pelanggaran hak cipta yang jelas: memanfaatkan karya tanpa membayar atau memperoleh izin yang tepat."
           },
           {
             label: "C",
-            text: "Mengubah warna template agar sesuai brand klien.",
+            text: "Mengubah warna dan layout template agar menyerupai gaya visual brand klien.",
             correct: false,
             explanation:
-              "Modifikasi warna tidak menghapus kewajiban memiliki lisensi."
+              "Modifikasi estetika tidak menghapus kewajiban mematuhi lisensi dasar karya tersebut."
           }
         ]
       },
@@ -1449,24 +1450,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Pelanggaran hak cipta atas karya tulis dalam bentuk digital.",
+            text: "Pelanggaran hak cipta terhadap karya tulis dalam format digital, karena mendistribusikan ulang tanpa izin dari pemegang hak.",
             correct: true,
             explanation:
-              "Format digital tidak menghilangkan perlindungan hak cipta."
+              "Format digital tidak menghilangkan perlindungan hak cipta yang sama dengan buku fisik."
           },
           {
             label: "B",
-            text: "Hanya pelanggaran etika belajar, tidak berkaitan dengan HAKI.",
+            text: "Sekadar pelanggaran etika belajar yang tidak terkait langsung dengan isu HAKI, karena tujuannya untuk pendidikan.",
             correct: false,
             explanation:
-              "Hak cipta tetap berlaku meski tujuannya 'untuk belajar bersama'."
+              "Tujuan 'untuk belajar' tidak otomatis membebaskan dari aturan hak cipta."
           },
           {
             label: "C",
-            text: "Masalah utama hanya pada kapasitas penyimpanan Google Drive.",
+            text: "Masalah utamanya terletak pada kapasitas penyimpanan Google Drive yang terbatas untuk menampung file besar.",
             correct: false,
             explanation:
-              "Isu teknis storage jelas bukan masalah inti di sini."
+              "Isu teknis storage sama sekali tidak menyentuh inti persoalan hak kekayaan intelektual."
           }
         ]
       },
@@ -1478,24 +1479,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Beranggapan bahwa semua proyek open-source otomatis bebas digunakan untuk tujuan apa pun, termasuk dijual ulang.",
+            text: "Menganggap bahwa semua proyek open-source bebas digunakan untuk tujuan apa pun, termasuk dijual ulang, tanpa membaca batasan lisensi yang melekat.",
             correct: true,
             explanation:
-              "Open-source punya banyak jenis lisensi; sebagian ada batasan komersialisasi yang harus dihormati."
+              "Open-source tidak selalu berarti 'bebas komersialisasi'; banyak lisensi yang memiliki larangan eksplisit soal ini."
           },
           {
             label: "B",
-            text: "Menggunakan bahasa Inggris di dokumentasi lisensi.",
+            text: "Fakta bahwa dokumentasi lisensi ditulis dalam bahasa Inggris sehingga dianggap kurang mengikat secara hukum lokal.",
             correct: false,
             explanation:
-              "Bahasa dokumentasi tidak relevan dengan pelanggaran hak cipta."
+              "Bahasa dokumentasi bukan alasan sah untuk mengabaikan ketentuan lisensi."
           },
           {
             label: "C",
-            text: "Menambahkan fitur baru sebelum menjual ulang.",
+            text: "Penambahan beberapa fitur baru sebelum menjual ulang produk yang dibuat dari template tersebut.",
             correct: false,
             explanation:
-              "Menambah fitur tidak menghapus kewajiban mematuhi lisensi dasar."
+              "Sekalipun menambah fitur, basis kodenya masih terikat pada lisensi awal yang harus dihormati."
           }
         ]
       }
@@ -1516,24 +1517,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Dimensi moral (hak pengakuan sebagai pencipta) dan dimensi ekonomi (potensi manfaat finansial).",
+            text: "Dimensi moral (hak untuk diakui sebagai pencipta) dan dimensi ekonomi (hak atas potensi manfaat finansial dari pemanfaatan karya tersebut).",
             correct: true,
             explanation:
-              "Keduanya diabaikan: nama pembuat hilang, keuntungan ekonomi tidak dibicarakan."
+              "Nama mahasiswa dihilangkan dan tidak ada pembicaraan soal pembagian keuntungan, sehingga dua dimensi itu terabaikan."
           },
           {
             label: "B",
-            text: "Dimensi teknis terkait kualitas kode yang tidak di-refactor.",
+            text: "Dimensi teknis, karena kode yang digunakan tidak mengikuti praktik refactoring modern dan standar clean code terkini.",
             correct: false,
             explanation:
-              "Teknis bisa jadi masalah, tapi bukan isu HAKI utama di skenario ini."
+              "Masalah teknis kualitas kode tidak termasuk ke dalam dimensi HAKI yang dibahas di sini."
           },
           {
             label: "C",
-            text: "Dimensi estetika karena UI tidak mengikuti tren terkini.",
+            text: "Dimensi estetika, karena UI sistem tidak lagi relevan dengan tren desain terbaru.",
             correct: false,
             explanation:
-              "Estetika UI bukan inti persoalan hak kekayaan intelektual di sini."
+              "Estetika UI bukan inti dari dilema hak kekayaan intelektual pada skenario ini."
           }
         ]
       },
@@ -1545,24 +1546,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Pemilik karya berhak mengatur dimensi ekonomi karyanya berbeda-beda untuk konteks sosial dan komersial.",
+            text: "Pemilik karya berhak mengatur dimensi ekonomi karyanya secara berbeda untuk konteks sosial dan komersial, meski hak moralnya sebagai pencipta tetap melekat.",
             correct: true,
             explanation:
-              "Hak moral dan ekonomi memungkinkan pemilik menentukan syarat penggunaan dalam berbagai konteks."
+              "Ia memilih longgar untuk tujuan sosial, tetapi membatasi pemanfaatan ekonomi komersial."
           },
           {
             label: "B",
-            text: "Karya yang digunakan untuk tujuan sosial otomatis bukan lagi objek HAKI.",
+            text: "Begitu karya dipakai untuk tujuan sosial, karya tersebut otomatis keluar dari rezim HAKI dan menjadi milik publik sepenuhnya.",
             correct: false,
             explanation:
-              "Tetap objek HAKI, hanya lisensinya yang dibuat longgar untuk tujuan tertentu."
+              "Penggunaan sosial tidak menghapus hak moral maupun hak ekonomi di luar perjanjian yang sudah disepakati."
           },
           {
             label: "C",
-            text: "Pengguna bebas mengabaikan ketentuan tersebut jika merasa tujuannya baik dan bermanfaat.",
+            text: "Pengguna bebas mengabaikan ketentuan tersebut jika merasa tujuan pemakaian 'baik' dan membawa manfaat bagi banyak orang.",
             correct: false,
             explanation:
-              "Niat baik tidak menghapus kewajiban menghormati ketentuan pemilik hak."
+              "Motif baik tidak membenarkan pelanggaran perjanjian yang jelas dinyatakan oleh pemilik hak."
           }
         ]
       },
@@ -1574,24 +1575,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Dimensi moral: hak untuk diakui sebagai pencipta karya desain.",
+            text: "Dimensi moral, yaitu hak desainer untuk diakui sebagai pencipta atau kontributor karya desain, terlepas dari siapa pemilik lisensi software.",
             correct: true,
             explanation:
-              "Hak moral tidak otomatis hilang hanya karena software dan lisensi dimiliki perusahaan."
+              "Software dan lisensi boleh milik perusahaan, tetapi hak moral atas karya desain bukan otomatis milik perusahaan sepenuhnya."
           },
           {
             label: "B",
-            text: "Dimensi teknis: hak untuk melakukan update software ke versi terbaru.",
+            text: "Dimensi teknis, karena desainer menjadi kesulitan melakukan update software ke versi terbaru.",
             correct: false,
             explanation:
-              "Kebijakan ini tidak berbicara soal update teknis sama sekali."
+              "Kebijakan yang disebut tidak berbicara soal update teknis sama sekali."
           },
           {
             label: "C",
-            text: "Dimensi estetika: kebebasan memilih warna dan layout.",
+            text: "Dimensi estetika, karena perusahaan membatasi kebebasan desainer dalam memilih warna dan layout.",
             correct: false,
             explanation:
-              "Warna/layout bukan inti persoalan hak moral penulis/pembuat."
+              "Aturan estetika mungkin ada, tetapi bukan poin yang dibahas di skenario ini."
           }
         ]
       }
@@ -1612,24 +1613,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Menurunkan kepercayaan terhadap sertifikasi sebagai indikator kompetensi nyata.",
+            text: "Menurunkan kepercayaan terhadap sertifikasi sebagai indikator kompetensi nyata, karena sertifikat tidak lagi menjamin bahwa pemegangnya benar-benar menguasai materi.",
             correct: true,
             explanation:
-              "Kalau praktik ini meluas, sertifikasi kehilangan makna dan merusak reputasi profesi."
+              "Jika praktik ini meluas, sertifikasi kehilangan makna dan merusak reputasi profesi secara keseluruhan."
           },
           {
             label: "B",
-            text: "Berpotensi membuat perusahaan menaikkan standar ujian internal.",
+            text: "Hanya mendorong perusahaan untuk membuat standar ujian internal yang lebih ketat untuk promosi jabatan.",
             correct: false,
             explanation:
-              "Dampaknya sistemik terhadap profesi, bukan sekadar kebijakan internal satu perusahaan."
+              "Dampaknya lebih luas daripada sekadar kebijakan internal satu perusahaan."
           },
           {
             label: "C",
-            text: "Meningkatkan pendapatan lembaga sertifikasi dan menguntungkan lembaga.",
+            text: "Meningkatkan pendapatan lembaga sertifikasi karena lebih banyak orang yang mendaftar ujian, apa pun cara mereka lulus.",
             correct: false,
             explanation:
-              "Pendapatan lembaga bukan fokus etis di sini."
+              "Pendapatan lembaga bukan inti problem etis di sini; yang kritis adalah legitimasi sertifikasi."
           }
         ]
       },
@@ -1641,24 +1642,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Misrepresentasi yang merusak kepercayaan rekruter terhadap CV dan sertifikasi.",
+            text: "Misrepresentasi, karena menampilkan informasi seolah-olah sudah tercapai, sehingga dapat menyesatkan rekruter tentang kualifikasi yang dimiliki.",
             correct: true,
             explanation:
-              "CV seharusnya memuat fakta, bukan keinginan atau rencana."
+              "CV seharusnya memuat fakta aktual, bukan niat atau status calon yang dibungkus seolah pencapaian."
           },
           {
             label: "B",
-            text: "Boleh saja, karena ia sudah berniat mengikuti ujian dalam waktu dekat.",
+            text: "Masih dapat dibenarkan karena ia memang berniat mengikuti ujian dalam waktu dekat dan sudah membayar biaya pendaftaran.",
             correct: false,
             explanation:
-              "Niat tidak boleh ditulis seolah-olah sudah menjadi pencapaian."
+              "Niat atau rencana tidak boleh ditulis setara dengan status sudah tersertifikasi."
           },
           {
             label: "C",
-            text: "Netral secara etis selama IPK-nya tinggi.",
+            text: "Netral secara etis jika kompetensi teknisnya tinggi dan IPK-nya sudah cukup menunjukkan kualitas akademik.",
             correct: false,
             explanation:
-              "Prestasi lain tidak menutupi tindakan menyesatkan di bagian lain CV."
+              "Prestasi lain tidak menghapus fakta bahwa bagian informasi sertifikasi ditulis dengan cara menyesatkan."
           }
         ]
       },
@@ -1670,24 +1671,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Menjelaskan secara transparan manfaat sertifikasi bagi karyawan dan perusahaan, serta membuat perjanjian yang wajar terkait ikatan dinas.",
+            text: "Menjelaskan secara transparan manfaat sertifikasi bagi karyawan dan perusahaan, lalu membuat perjanjian ikatan dinas dengan durasi dan konsekuensi yang wajar dan disepakati bersama.",
             correct: true,
             explanation:
-              "Kunci etisnya ada pada transparansi, kewajaran, dan kesepakatan sukarela."
+              "Transparansi, kewajaran, dan persetujuan sukarela adalah kunci agar kebijakan seperti ini tetap etis."
           },
           {
             label: "B",
-            text: "Perusahaan ingin karyawan membayar penuh biaya sertifikasi, lalu mendukung keberhasilan karyawan dengan memberi course gratis.",
+            text: "Mewajibkan karyawan menanggung penuh biaya sertifikasi dan hanya memberikan dukungan berupa akses materi belajar gratis.",
             correct: false,
             explanation:
-              "Jika sertifikasi diwajibkan untuk kepentingan perusahaan, wajar kalau perusahaan ikut menanggung beban."
+              "Jika sertifikasi diwajibkan untuk kepentingan bisnis, wajar bila perusahaan ikut menanggung beban biaya."
           },
           {
             label: "C",
-            text: "Melarang karyawan mengikuti sertifikasi agar tidak berisiko pindah ke perusahaan lain.",
+            text: "Melarang karyawan mengikuti sertifikasi eksternal apa pun agar tidak memicu risiko mereka pindah ke perusahaan lain setelah kompetensinya naik.",
             correct: false,
             explanation:
-              "Menghalangi pengembangan kompetensi demi menahan karyawan jelas tidak etis."
+              "Strategi menahan kompetensi karyawan demi mencegah turnover jelas bertentangan dengan semangat pengembangan profesional."
           }
         ]
       }
@@ -1708,24 +1709,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Mengandalkan dump soal sebagai bahan utama belajar agar probabilitas lulus tinggi.",
+            text: "Menjadikan dump soal sebagai bahan utama belajar, karena pola soal yang sama sangat mungkin muncul lagi sehingga peluang lulus meningkat drastis.",
             correct: false,
             explanation:
-              "Ini merusak integritas ujian dan membuat sertifikasi tidak lagi mencerminkan kompetensi."
+              "Ini secara praktis mungkin efektif, tapi merusak integritas ujian dan mengurangi makna sertifikasi."
           },
           {
             label: "B",
-            text: "Menyusun jadwal belajar rutin dengan materi resmi, praktik lab, dan simulasi ujian yang sah.",
+            text: "Menyusun jadwal belajar rutin menggunakan materi resmi, praktik lab, dan simulasi ujian yang sah, sembari mungkin sekadar melihat pola jenis soal tanpa menghafal kunci bocoran.",
             correct: true,
             explanation:
-              "Fokus ke penguasaan konsep dan skill, bukan sekadar hafal kunci jawaban."
+              "Fokus ke penguasaan konsep dan skill, bukan mengandalkan bocoran jawaban sebagai strategi utama."
           },
           {
             label: "C",
-            text: "Mendaftar ujian berkali-kali dengan persiapan khusus sampai kebetulan lulus.",
+            text: "Mendaftar ujian berkali-kali tanpa persiapan berarti, dengan harapan suatu saat kombinasi soal cocok dengan pengetahuan umum yang sudah dimiliki.",
             correct: false,
             explanation:
-              "Ini hanya membuang biaya dan tidak meningkatkan kompetensi nyata."
+              "Ini membuang biaya dan tidak menambah kompetensi secara sistematis."
           }
         ]
       },
@@ -1737,24 +1738,24 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Dapat diterima, karena kolaborasi dapat memperdalam pemahaman masing-masing.",
+            text: "Dapat diterima, karena kolaborasi pada tahap belajar membantu memperdalam pemahaman masing-masing, sementara ujian tetap dikerjakan secara mandiri.",
             correct: true,
             explanation:
-              "Yang dilarang adalah kolusi saat ujian, bukan belajar bersama sebelum ujian."
+              "Belajar bersama dengan pembagian fokus topik adalah bentuk kolaborasi yang sehat selama ujian tidak dikolusi."
           },
           {
             label: "B",
-            text: "Setara dengan mencontek karena pengetahuan dibagi secara tidak merata.",
+            text: "Setara dengan mencontek, karena pembagian topik membuat distribusi pengetahuan tidak merata di antara anggota kelompok.",
             correct: false,
             explanation:
-              "Pengetahuan memang dibangun bersama; yang penting ujian dikerjakan mandiri."
+              "Distribusi pengetahuan lewat saling mengajar adalah bagian dari proses belajar, bukan bentuk kecurangan."
           },
           {
             label: "C",
-            text: "Hanya boleh jika lembaga sertifikasi memberikan modul kelompok.",
+            text: "Hanya boleh dilakukan jika lembaga sertifikasi secara eksplisit menyediakan modul belajar kelompok resmi.",
             correct: false,
             explanation:
-              "Lembaga tidak melarang belajar kelompok; yang diatur umumnya adalah pelaksanaan ujian."
+              "Lembaga sertifikasi umumnya tidak melarang belajar kelompok; yang diatur ketat adalah perilaku saat ujian."
           }
         ]
       },
@@ -1766,30 +1767,31 @@ const topics = [
         options: [
           {
             label: "A",
-            text: "Sertifikasi kehilangan fungsi sebagai indikator bahwa pemegangnya benar-benar menguasai kompetensi yang diukur.",
+            text: "Sertifikasi kehilangan fungsi sebagai indikator bahwa pemegangnya benar-benar menguasai kompetensi yang diukur, dan menjadi sekadar bukti kemampuan menghafal pola soal.",
             correct: true,
             explanation:
-              "Kalau mayoritas hanya hafal kunci, sertifikasi jadi simbol kosong."
+              "Jika banyak peserta memakai strategi ini, reputasi sertifikasi secara kolektif akan turun."
           },
           {
             label: "B",
-            text: "Biaya ujian pasti akan menjadi lebih terjangkau di masa depan.",
+            text: "Ujian menjadi cenderung lebih murah di masa depan karena lembaga sertifikasi tidak perlu lagi menyusun soal yang kompleks.",
             correct: false,
             explanation:
-              "Harga ujian tidak otomatis turun karena kualitas peserta turun."
+              "Harga ujian tidak otomatis menurun hanya karena kualitas pemanfaatannya merosot."
           },
           {
             label: "C",
-            text: "Lembaga sertifikasi terpaksa menghapus seluruh soal pilihan ganda.",
+            text: "Lembaga sertifikasi pasti akan menghapus seluruh bentuk soal pilihan ganda dan beralih ke format lain.",
             correct: false,
             explanation:
-              "Format soal bisa berubah, tapi ini bukan konsekuensi otomatis."
+              "Format soal mungkin berevolusi, tapi tidak ada kepastian bahwa semua pilihan ganda akan dihapus."
           }
         ]
       }
     ]
   }
 ];
+
 
 
     let currentRound = 1;
